@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 using TMPro;
+using JetBrains.Annotations;
+
+
 
 /* Handles Turn Phases
  * Make appropriate questions appear at the beginning of a phase
@@ -35,6 +38,7 @@ using TMPro;
  */
 public class TurnManager : MonoBehaviour
 {
+    public RandomEventHandler randomEventHandler;
     public HexMapEditor editor;
     public HexGrid grid;
     public TurnPhase current;
@@ -296,7 +300,7 @@ public class TurnManager : MonoBehaviour
               break;
           }*/
           break;
-
+          
         case TurnPhase.Planting:
           switch(index)
           {
@@ -388,7 +392,10 @@ public class TurnManager : MonoBehaviour
       /* Maybe add a month display to the UI that changes with the turn phases, a turn is a whole season (for now anyway)
          For now, just showing the turn phase
       */
+      
       phaseText.text = current.ToString();
+      
+
       switch(current)
       {
         case TurnPhase.Preplant:
@@ -463,6 +470,9 @@ public class TurnManager : MonoBehaviour
 
           yearText.text = "Year " + years;
           Debug.Log(current);
+          
+         randomEventHandler.HandleRandomEvent(current);
+
           break;
 
         case TurnPhase.Planting:
@@ -500,6 +510,9 @@ public class TurnManager : MonoBehaviour
           tiller.interactable = true;
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
+          
+          randomEventHandler.HandleRandomEvent(current);
+
           break;
 
         case TurnPhase.Cotyledon:
@@ -542,6 +555,9 @@ public class TurnManager : MonoBehaviour
 
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
+
+          randomEventHandler.HandleRandomEvent(current);
+
           break;
 
         case TurnPhase.Vegatative:
@@ -580,6 +596,9 @@ public class TurnManager : MonoBehaviour
 
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
+
+          randomEventHandler.HandleRandomEvent(current);
+
           break;
 
         case TurnPhase.Fertilizer:
@@ -603,6 +622,10 @@ public class TurnManager : MonoBehaviour
 
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
+          
+          
+          randomEventHandler.HandleRandomEvent(current);
+
           break;
 
         case TurnPhase.Reproductive:
@@ -654,6 +677,9 @@ public class TurnManager : MonoBehaviour
           }
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
+          
+          randomEventHandler.HandleRandomEvent(current);
+
           break;
 
         case TurnPhase.Harvest:
@@ -669,6 +695,9 @@ public class TurnManager : MonoBehaviour
           sale.interactable = true;
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
+          
+          randomEventHandler.HandleRandomEvent(current);
+
           break;
 
         default:

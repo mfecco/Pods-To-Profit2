@@ -1,0 +1,43 @@
+
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class RandomEventHandler : MonoBehaviour
+{
+    public RandomEvent[] randomEvents;
+    public TurnManager turnmanager;
+    private float randomChance;
+    public Yield cropYield;
+
+    void Start()
+    {
+        //this is needed to make sure scriptable object list is clear when game restarts
+        cropYield.clearYield();
+    }
+    // Function to trigger a random event
+    public void HandleRandomEvent(TurnPhase current)
+    {
+        // Randomly select an event from the list
+        int randomIndex = Random.Range(0, randomEvents.Count());
+        randomChance = Random.Range(0f, 1f);
+        Debug.Log($"The random index chosen was {randomIndex} and the random chance is {randomChance}");
+        if (randomChance <= randomEvents[randomIndex].probability)
+        {
+            randomEvents[randomIndex].PrintItemDetails();
+            Modifier mod = randomEvents[randomIndex].getModifier(current); // Invoke the randomly selected event
+            if(mod!=null)
+            {
+                //needs to fix after decide how to treat repeat events
+                if(!cropYield.activeModifiers.Contains(mod))
+                {
+                    cropYield.activeModifiers.Add(mod);
+                    //this will need to be moved in order to allow player to recover from active events before applying full impact?
+                    cropYield.updateYield();
+                }
+            }
+        }
+    }   
+
+}
