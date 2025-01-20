@@ -4,8 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewRandomEvent", menuName = "Game/RandomEvent")]  // Makes the asset creation option appear in the Unity Editor
-public class RandomEvent : ScriptableObject
+[CreateAssetMenu(fileName = "NewRandomEvent", menuName = "Game/Event")]  // Makes the asset creation option appear in the Unity Editor
+public class Event : ScriptableObject
 {
 
     public string eventName;

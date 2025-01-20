@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RandomEventHandler : MonoBehaviour
 {
-    public RandomEvent[] randomEvents;
+    public Event[] randomEvents;
     public TurnManager turnmanager;
     private float randomChance;
     public Yield cropYield;
@@ -22,7 +22,9 @@ public class RandomEventHandler : MonoBehaviour
         // Randomly select an event from the list
         int randomIndex = Random.Range(0, randomEvents.Count());
         randomChance = Random.Range(0f, 1f);
+        
         Debug.Log($"The random index chosen was {randomIndex} and the random chance is {randomChance}");
+        
         if (randomChance <= randomEvents[randomIndex].probability)
         {
             randomEvents[randomIndex].PrintItemDetails();

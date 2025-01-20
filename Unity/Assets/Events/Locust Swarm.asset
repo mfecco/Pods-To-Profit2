@@ -19,29 +19,35 @@ MonoBehaviour:
   - eventName: Locust Swarm
     phaseName: PrePlant
     impact: 0
+    rateOfChange: 0
     appliedTurnPhase: 0
   - eventName: Locust Swarm
     phaseName: Planting
     impact: 0.22
+    rateOfChange: 0.25
     appliedTurnPhase: 1
   - eventName: Locust Swarm
     phaseName: Cotyledon
     impact: 0.44
+    rateOfChange: 0.25
     appliedTurnPhase: 2
   - eventName: Locust Swarm
     phaseName: Vegatative
     impact: 0.75
+    rateOfChange: 0.25
     appliedTurnPhase: 3
   - eventName: Locust Swarm
     phaseName: Fertilizer
     impact: 0.66
+    rateOfChange: 0.25
     appliedTurnPhase: 4
   - eventName: Locust Swarm
     phaseName: Reproductive
     impact: 0.55
+    rateOfChange: 0.25
     appliedTurnPhase: 5
   - eventName: Locast Swarm
     phaseName: Harvest
     impact: 0.44
+    rateOfChange: 0.25
     appliedTurnPhase: 6
-  rateOfChange: 0
