@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewRandomEvent", menuName = "Game/Event")]  // Makes the asset creation option appear in the Unity Editor
+[CreateAssetMenu(fileName = "NewEvent", menuName = "Game/Event")]  // Makes the asset creation option appear in the Unity Editor
 public class Event : ScriptableObject
 {
 
@@ -31,11 +31,12 @@ public class Event : ScriptableObject
             if (modifier.appliedTurnPhase == currentPhase)
             {
                 
-                Debug.Log($"Applying {modifier.phaseName} modifier for {eventName} of {modifier.impact}");
+                modifier.activeDuration = modifier.defaultDuration;
+                modifier.activeImpact = modifier.defaultImpact;
+                Debug.Log($"Applying {modifier.phaseName} modifier for {eventName} of {modifier.activeImpact}");
                 return modifier;
             }
-        }
-       
+        }   
         return null;
     }
 }

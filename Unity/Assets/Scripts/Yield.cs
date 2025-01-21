@@ -20,7 +20,17 @@ public class Yield : ScriptableObject
 
         foreach (var modifier in activeModifiers)
         {
-            modifiedcropYield = modifiedcropYield - (modifiedcropYield * modifier.impact);
+            if (modifier.activeDuration > 0)
+            {
+                Debug.Log($"The mod {modifier.eventName} - {modifier.phaseName} has been crunched");
+                modifiedcropYield = modifiedcropYield - (modifiedcropYield * modifier.activeImpact);
+                modifier.modTick();
+            }
+            if (modifier.activeDuration <= 0)
+            {
+                activeModifiers.Remove(modifier);
+                Debug.Log($"{modifier.eventName} - {modifier.phaseName} has expired");
+            }
         }
     
         cropYield = modifiedcropYield;
@@ -28,7 +38,7 @@ public class Yield : ScriptableObject
     //clears modifier list 
     public void clearYield()
     {
-        cropYield = 0;
+        cropYield = 1000;
         modifiedcropYield = 0;
         activeModifiers.Clear();
         Debug.Log("Event list cleared in Crop Yield");

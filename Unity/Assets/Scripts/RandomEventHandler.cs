@@ -32,14 +32,20 @@ public class RandomEventHandler : MonoBehaviour
             if(mod!=null)
             {
                 //needs to fix after decide how to treat repeat events
+                //maybe check for mods containing certain aspects or event/phase combo
                 if(!cropYield.activeModifiers.Contains(mod))
                 {
+                    Debug.Log($"{mod.eventName} modifier is added");
                     cropYield.activeModifiers.Add(mod);
-                    //this will need to be moved in order to allow player to recover from active events before applying full impact?
-                    cropYield.updateYield();
+
+                    
+                    
                 }
             }
         }
+        //this will need to be moved in order to allow player to recover from active events before applying full impact?
+        //this might be better to exist in a different script.
+        cropYield.updateYield();
     }   
 
 }
