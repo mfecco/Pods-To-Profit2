@@ -5,6 +5,8 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "NewEvent", menuName = "Game/Event")]  // Makes the asset creation option appear in the Unity Editor
+
+//can be used as a model for all different types of events; weather, positive effects,  
 public class Event : ScriptableObject
 {
 
@@ -17,12 +19,12 @@ public class Event : ScriptableObject
     //mitigation options?
 
     //debug check that all info is correct
-    public void PrintItemDetails()
+    public void PrintDetails()
     {
         Debug.Log($"Event occured\n {eventName} - {eventDescription}");
     }
 
-   //apply specific phase modifier for event - need to fix to apply to yield object when setup
+   //apply specific phase modifier for event 
     public Modifier getModifier(TurnPhase currentPhase)
     {
         
@@ -31,8 +33,7 @@ public class Event : ScriptableObject
             if (modifier.appliedTurnPhase == currentPhase)
             {
                 
-                modifier.activeDuration = modifier.defaultDuration;
-                modifier.activeImpact = modifier.defaultImpact;
+                modifier.setActive();
                 Debug.Log($"Applying {modifier.phaseName} modifier for {eventName} of {modifier.activeImpact}");
                 return modifier;
             }

@@ -18,36 +18,57 @@ MonoBehaviour:
   modifiers:
   - eventName: Locust Swarm
     phaseName: PrePlant
-    impact: 0
+    defaultImpact: 0
+    activeImpact: 0
     rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0
   - eventName: Locust Swarm
     phaseName: Planting
-    impact: 0.22
+    defaultImpact: 0
+    activeImpact: 0
     rateOfChange: 0.25
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 1
   - eventName: Locust Swarm
     phaseName: Cotyledon
-    impact: 0.44
+    defaultImpact: 0
+    activeImpact: 0
     rateOfChange: 0.25
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 2
   - eventName: Locust Swarm
     phaseName: Vegatative
-    impact: 0.75
+    defaultImpact: 0
+    activeImpact: 0
     rateOfChange: 0.25
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 3
   - eventName: Locust Swarm
     phaseName: Fertilizer
-    impact: 0.66
+    defaultImpact: 0
+    activeImpact: 0
     rateOfChange: 0.25
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 4
   - eventName: Locust Swarm
     phaseName: Reproductive
-    impact: 0.55
+    defaultImpact: 0
+    activeImpact: 0
     rateOfChange: 0.25
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 5
   - eventName: Locast Swarm
     phaseName: Harvest
-    impact: 0.44
+    defaultImpact: 0
+    activeImpact: 0
     rateOfChange: 0.25
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 6

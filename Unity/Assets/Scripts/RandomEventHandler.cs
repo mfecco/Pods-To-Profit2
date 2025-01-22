@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+//could be used to handle differnt levels of events.  early game event handleing at same time as end game?  
 public class RandomEventHandler : MonoBehaviour
 {
     public Event[] randomEvents;
@@ -14,7 +15,7 @@ public class RandomEventHandler : MonoBehaviour
     void Start()
     {
         //this is needed to make sure scriptable object list is clear when game restarts
-        cropYield.clearYield();
+        cropYield.initYield();
     }
     // Function to trigger a random event
     public void HandleRandomEvent(TurnPhase current)
@@ -27,8 +28,8 @@ public class RandomEventHandler : MonoBehaviour
         
         if (randomChance <= randomEvents[randomIndex].probability)
         {
-            randomEvents[randomIndex].PrintItemDetails();
-            Modifier mod = randomEvents[randomIndex].getModifier(current); // Invoke the randomly selected event
+            randomEvents[randomIndex].PrintDetails();
+            Modifier mod = randomEvents[randomIndex].getModifier(current);
             if(mod!=null)
             {
                 //needs to fix after decide how to treat repeat events
@@ -38,8 +39,6 @@ public class RandomEventHandler : MonoBehaviour
                     Debug.Log($"{mod.eventName} modifier is added");
                     cropYield.activeModifiers.Add(mod);
 
-                    
-                    
                 }
             }
         }

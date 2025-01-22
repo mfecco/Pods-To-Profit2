@@ -51198,11 +51198,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomEvents:
-  - {fileID: 11400000, guid: 69e09e792ac483e439c6417fda0ed455, type: 2}
   - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
-  - {fileID: 11400000, guid: 1449cba0c804bed43875134d60b06291, type: 2}
-  - {fileID: 11400000, guid: 513036aac9776a948bd7f01faead9cb1, type: 2}
-  - {fileID: 11400000, guid: 2288f28c294ed1448a4bfa2a7b0532d2, type: 2}
+  - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
+  - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
+  - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
   turnmanager: {fileID: 1477915479}
   cropYield: {fileID: 11400000, guid: b446a995d99905b4e996cd4c5333708b, type: 2}
 --- !u!4 &1609404763

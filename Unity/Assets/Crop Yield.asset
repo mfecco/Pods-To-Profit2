@@ -12,6 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e07c5a8ab1fb834bb65ec37a7fc42f2, type: 3}
   m_Name: Crop Yield
   m_EditorClassIdentifier: 
-  cropYield: 0
-  modifiedcropYield: 0
-  activeModifiers: []
+  cropYield: 0.065199375
+  modifiedcropYield: 0.065199375
+  activeModifiers:
+  - eventName: Weeds
+    phaseName: Harvest
+    defaultImpact: 0.22
+    activeImpact: 0.22
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 6
+  - eventName: Weeds
+    phaseName: Reproductive
+    defaultImpact: 0.33
+    activeImpact: 0.231
+    rateOfChange: 0.3
+    defaultDuration: 3
+    activeDuration: 2
+    appliedTurnPhase: 5
