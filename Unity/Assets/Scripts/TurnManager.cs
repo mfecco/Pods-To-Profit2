@@ -38,6 +38,8 @@ using JetBrains.Annotations;
  */
 public class TurnManager : MonoBehaviour
 {
+  //added RandomEventHandler and 7 references in activeTurn() by Matt Fecco 
+  //this should be only changes made to implement as of now.
     public RandomEventHandler randomEventHandler;
     public HexMapEditor editor;
     public HexGrid grid;
