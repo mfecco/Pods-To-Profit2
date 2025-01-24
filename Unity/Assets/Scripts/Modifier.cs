@@ -6,21 +6,24 @@ public class Modifier
    // Name of the phase modifier assigned to 
     public string phaseName;
     // The effect or impact of the modifier
-    private float defaultImpact;
+    public float defaultImpact;
     //could be smaller impact if treated in same phase it arrives.  
     //Might be good to move this for a general var in RandomEvent class
     //public float initialImpact 
     public float activeImpact; 
     //compounding effect if untreated
-    private float rateOfChange;
+    public float rateOfChange;
     //amount of turns effect lasts, set -1 for infinate
-    private int defaultDuration;
+    public int defaultDuration;
     public int activeDuration;
     //turnphase object for checking
     public TurnPhase appliedTurnPhase;
     
+    public Event parent;
+    
     // can add more properties if needed, like probability, etc.
 
+    //need a way to get details of event, might work attaching details to modifiers
     //execute a single tick of modifier duration and effect
     //take into account degrading effect over time
     public void modTick()
@@ -34,21 +37,12 @@ public class Modifier
     {
         activeDuration = defaultDuration;
         activeImpact = defaultImpact;
+        
     }
 
-    public void setDuration(int dur)
-    {
-        defaultDuration = dur;
-    }
-
-    public void setRoC(float roc)
-    {
-        rateOfChange = roc;
-    }
-
-    public void setImpact(float impact)
-    {
-        defaultImpact = impact;
-    }
+   public string getDetails()
+   {
+    return parent.eventDescription;
+   }
 }
 

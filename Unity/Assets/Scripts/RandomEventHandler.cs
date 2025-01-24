@@ -8,6 +8,7 @@ using UnityEngine;
 public class RandomEventHandler : MonoBehaviour
 {
     public Event[] randomEvents;
+    public EventCategory[] categories;
     public TurnManager turnmanager;
     private float randomChance;
     public Yield cropYield;
