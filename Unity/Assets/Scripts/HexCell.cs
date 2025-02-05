@@ -8,9 +8,14 @@ using UnityEngine;
 public class HexCell : MonoBehaviour
 {
 	public HexCoordinates coordinates;
-
   public int terrainType = 0;
+  public bool tilled = false;
+  public bool fungicide = false;
+  //Maija - etc... (implement the rest of the attributes later when we know what we're doing)
 	public GameObject plant;
+
+
+  //Maija - below can probably be removed with this comment once we move to 2D and change how the grid is created (in editor)
 
   [SerializeField]
   HexCell[] neighbors;
@@ -31,4 +36,7 @@ public class HexCell : MonoBehaviour
 	{
 		Instantiate(obj, transform.position + offset, Quaternion.identity, gameObject.transform);
 	}
+
+  //Maija note: Keep the code below if you end up making changes to the tile system, 
+  //it is necessary to keep the tool system functional
 }
