@@ -97,6 +97,7 @@ yarn-error.log*
 
 */frontend
 /venv
+
 Unity/Library/APIUpdater/project-dependencies.graph
 Unity/Library/ArtifactDB
 Unity/Library/ArtifactDB-lock
@@ -593,3 +594,4 @@ Unity/Library/ShaderCache/EditorEncounteredVariants
 Unity/Library/SourceAssetDB
 Unity/Library/SourceAssetDB-lock
 Unity/Library/StateCache/SceneView/49/49fb292b3658b6ad6d3394b0da8149a8.json
+Unity/Library/SceneVisibilityState.asset
