@@ -18,71 +18,66 @@ MonoBehaviour:
   modifiers:
   - eventName: Weeds
     phaseName: Preplant
-    defaultImpact: 0.33
-    activeImpact: 0.1617
-    rateOfChange: 0.3
-    defaultDuration: 3
-    activeDuration: 1
-    appliedTurnPhase: 0
-    Handler: {fileID: 0}
-    parent: {fileID: 11400000}
-  - eventName: Weeds
-    phaseName: Planting
-    defaultImpact: 0.44
-    activeImpact: 0.308
+    defaultImpact: -0.33
+    activeImpact: 0.231
     rateOfChange: 0.3
     defaultDuration: 3
     activeDuration: 2
+    appliedTurnPhase: 0
+  - eventName: Weeds
+    phaseName: Planting
+    defaultImpact: -0.44
+    activeImpact: 0.15092
+    rateOfChange: 0.3
+    defaultDuration: 3
+    activeDuration: 0
     appliedTurnPhase: 1
-    Handler: {fileID: 0}
-    parent: {fileID: 0}
   - eventName: Weeds
     phaseName: Cotyledon
-    defaultImpact: 0.33
+    defaultImpact: -0.33
     activeImpact: 0
     rateOfChange: 0.3
     defaultDuration: 3
     activeDuration: 0
     appliedTurnPhase: 2
-    Handler: {fileID: 0}
-    parent: {fileID: 0}
   - eventName: Weeds
     phaseName: Vegatative
-    defaultImpact: 0.55
+    defaultImpact: -0.55
     activeImpact: 0
     rateOfChange: 0.3
     defaultDuration: 3
     activeDuration: 0
     appliedTurnPhase: 3
-    Handler: {fileID: 0}
-    parent: {fileID: 0}
   - eventName: Weeds
     phaseName: Fertilizer
-    defaultImpact: 0.44
-    activeImpact: 0.15092
+    defaultImpact: -0.44
+    activeImpact: 0.308
     rateOfChange: 0.3
     defaultDuration: 3
-    activeDuration: 0
+    activeDuration: 2
     appliedTurnPhase: 4
-    Handler: {fileID: 0}
-    parent: {fileID: 0}
   - eventName: Weeds
     phaseName: Reproductive
-    defaultImpact: 0.33
+    defaultImpact: -0.33
     activeImpact: 0.113189995
     rateOfChange: 0.3
     defaultDuration: 3
     activeDuration: 0
     appliedTurnPhase: 5
-    Handler: {fileID: 0}
-    parent: {fileID: 0}
   - eventName: Weeds
     phaseName: Harvest
-    defaultImpact: 0.22
+    defaultImpact: -0.22
     activeImpact: 0.22
     rateOfChange: 0
     defaultDuration: 3
     activeDuration: 0
     appliedTurnPhase: 6
-    Handler: {fileID: 0}
-    parent: {fileID: 0}
+  activeMod:
+    eventName: Weeds
+    phaseName: Fertilizer
+    defaultImpact: 0.44
+    activeImpact: 0.308
+    rateOfChange: 0.3
+    defaultDuration: 3
+    activeDuration: 2
+    appliedTurnPhase: 4

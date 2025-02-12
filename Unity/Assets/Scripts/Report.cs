@@ -16,10 +16,12 @@ public class Report
     {
         totalValue = cropYield.calcYield();
 
-        foreach (var modifier in cropYield.activeModifiers)
+        foreach (var e in cropYield.activeEvents)
         {
-            modifier.getDetails();
+            Debug.Log($"--{e.eventName}");
         }
+
+        Debug.Log($"--------------------{cropYield.cropYield}total acres = ${totalValue * 30}---------------------------");
 
     }
 

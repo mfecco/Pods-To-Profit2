@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6880b42b873a8a4b99318129b15009b, type: 3}
-  m_Name: Insects
+  m_Name: Season 1 Events
   m_EditorClassIdentifier: 
-  label: 
+  label: Season 1 Events
   events:
-  - {fileID: 11400000, guid: 69e09e792ac483e439c6417fda0ed455, type: 2}
+  - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
   - {fileID: 11400000, guid: 2288f28c294ed1448a4bfa2a7b0532d2, type: 2}
+  - {fileID: 11400000, guid: 1449cba0c804bed43875134d60b06291, type: 2}

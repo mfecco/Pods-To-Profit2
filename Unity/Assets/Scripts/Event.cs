@@ -14,6 +14,7 @@ public class Event : ScriptableObject
     public float probability;
     public string eventDescription;
     public Modifier[] modifiers;
+    public Modifier activeMod;
     
     //visual effects?
     //mitigation options?
@@ -39,5 +40,8 @@ public class Event : ScriptableObject
             }
         }   
         return null;
+    }
+    public void clearActiveMod(){
+        activeMod = null;
     }
 }

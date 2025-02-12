@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewYield", menuName = "Game/Yield")]
@@ -11,50 +12,17 @@ public class Yield : ScriptableObject
 {
     public float cropYield;
     public float modifiedcropYield;
-    public List<Modifier> activeModifiers = new List<Modifier>();
-    private List<Modifier> expiredModifiers = new List<Modifier>();
-
-    //first ugly attempt at tracking total yield based on active modifiers
-    //needs work
-    public void updateYield()
-    {
-        modifiedcropYield = cropYield;
-
-        foreach (var modifier in activeModifiers)
-        {
-            if (modifier.activeDuration != 0)
-            {
-                Debug.Log($"The mod {modifier.eventName} - {modifier.phaseName} - {modifier.activeImpact} has been crunched");
-                modifiedcropYield = modifiedcropYield - (modifiedcropYield * modifier.activeImpact);
-                modifier.modTick();
-            }
-            if (modifier.activeDuration == 0)
-            {
-                expiredModifiers.Add(modifier);
-                Debug.Log($"{modifier.eventName} - {modifier.phaseName} has expired");
-            }
-        }
-
-        foreach (var modifier in expiredModifiers)
-        {
-            Debug.Log($"{modifier.eventName} - {modifier.phaseName} removed");
-            activeModifiers.Remove(modifier);
-        }
-        expiredModifiers.Clear();
+    public List<Event> activeEvents = new List<Event>();
+    private List<Event> expiredEvents = new List<Event>();
     
-        cropYield = modifiedcropYield;
-    }
 
     //this is good for when we implement mitigation options
-    public void removeMod(string eventName)
+    public void removeEvent(Event e)
 {
-    for (int i = activeModifiers.Count - 1; i >= 0; i--)
-    {
-        if (activeModifiers[i].eventName == eventName)
-        {
-            activeModifiers.RemoveAt(i);
+    if (activeEvents.Contains(e)){
+            activeEvents.Remove(e);
         }
-    }
+    
 }
 
 
@@ -63,23 +31,59 @@ public class Yield : ScriptableObject
     public float calcYield()
     {
         float totalMod = cropYield;
-        foreach (var modifier in activeModifiers)
+        foreach (var e in activeEvents)
         {
-            totalMod = modifier.activeImpact * totalMod;
+            totalMod = (e.activeMod.activeImpact + 1) * totalMod;
         }
 
         return totalMod;
     }
+
     //clears modifier list 
     public void initYield()
     {
         //this is only for testing
         cropYield = 1000;
         modifiedcropYield = 0;
-        activeModifiers.Clear();
-        expiredModifiers.Clear();
+        activeEvents.Clear();
+        expiredEvents.Clear();
         Debug.Log("Event list cleared in Crop Yield");
     }
 
-}
 
+
+
+    public void updateEventYield(){
+        {
+        modifiedcropYield = cropYield;
+
+        //step through activeEvents list to manage each event's active modifier
+        foreach (var e in activeEvents)
+        {
+            //if modifer has a non zero duration
+            if (e.activeMod.activeDuration != 0)
+            {
+                Debug.Log($"The mod {e.name} - {e.activeMod.phaseName} - {e.activeMod.activeImpact} has been crunched");
+                modifiedcropYield = modifiedcropYield - (modifiedcropYield * e.activeMod.activeImpact);
+                e.activeMod.modTick();
+            }
+            if (e.activeMod.activeDuration == 0)
+            {
+                expiredEvents.Add(e);
+                Debug.Log($"{e.name} - {e.activeMod.phaseName} has expired");
+            }
+        }
+        // clear the expiredEvents after they have been removed from activeEvents
+        foreach (var e in expiredEvents)
+        {
+            Debug.Log($"{e.name} - {e.activeMod.phaseName} removed");
+            activeEvents.Remove(e);
+        }
+        expiredEvents.Clear();
+    
+        cropYield = modifiedcropYield;
+    }
+
+    }
+
+}

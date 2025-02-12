@@ -7,5 +7,6 @@ public class EventCategory: ScriptableObject
 {
     public string label;
     public Event[] events;
+    
 }
 

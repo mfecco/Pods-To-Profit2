@@ -16,24 +16,28 @@ MonoBehaviour:
   probability: 0.24
   eventDescription: 'Young plants are covered in little peststhese '
   modifiers:
-  - phaseName: 
-    impact: 0
-    appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
-    appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
-    appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
-    appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
-    appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
-    appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
+  - eventName: Three cornered alfalfa hopper
+    phaseName: Vegatative
+    defaultImpact: -0.5
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 3
+  - eventName: Three cornered alfalfa hopper
+    phaseName: Cotyledon
+    defaultImpact: -0.5
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 2
+  activeMod:
+    eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0

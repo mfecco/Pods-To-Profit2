@@ -51634,12 +51634,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f457572fd05fd8541bb49356abea5b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomEvents:
-  - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
-  - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
-  - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
-  - {fileID: 11400000, guid: a934fbe20c2c23d429db9f8ed51ab919, type: 2}
-  categories: []
+  randomEvents: []
+  categories:
+  - {fileID: 11400000, guid: 538ace2b9bba3e04a971b4822633f9a4, type: 2}
+  - {fileID: 11400000, guid: 265434d82d8a9f143b7207f400929d10, type: 2}
+  - {fileID: 11400000, guid: da1cc7d57fb905542a96fcf467e795f3, type: 2}
+  - {fileID: 11400000, guid: e17cd19d8c8b9294e8ec5aef6dd7c1c1, type: 2}
+  - {fileID: 11400000, guid: 479b3981c0959804ba7b72b3cb8ff5e1, type: 2}
+  - {fileID: 11400000, guid: 6bd8d5c69e20af54a944aa38d004820f, type: 2}
+  - {fileID: 11400000, guid: db44ee09e75fd2745b5ef5f7129d5539, type: 2}
   turnmanager: {fileID: 1477915479}
   cropYield: {fileID: 11400000, guid: b446a995d99905b4e996cd4c5333708b, type: 2}
 --- !u!4 &1609404763
@@ -56433,7 +56436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -26.233643, y: -3.8063965}
+  m_AnchoredPosition: {x: -26.233643, y: -3.8062744}
   m_SizeDelta: {x: -609.8035, y: -178.9209}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1771989435

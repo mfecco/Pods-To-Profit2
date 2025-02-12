@@ -19,8 +19,6 @@ public class Modifier
     //turnphase object for checking
     public TurnPhase appliedTurnPhase;
     
-    public Event parent;
-    
     // can add more properties if needed, like probability, etc.
 
     //need a way to get details of event, might work attaching details to modifiers
@@ -40,9 +38,5 @@ public class Modifier
         
     }
 
-   public string getDetails()
-   {
-    return parent.eventDescription;
-   }
 }
 

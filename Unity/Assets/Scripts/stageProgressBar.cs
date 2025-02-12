@@ -25,7 +25,7 @@ using UnityEngine.UI;
  * Here are the events that I currently have for each stage:
  *  - Planting:     seeds, till
  *  - Cotyledon:    fungicide
- *  - Vegatative:   scout, pesticide, disease
+ *  - Vegetative:   scout, pesticide, disease
  *  - Fertilizer:   fertilizer, irrigation
  *  - Reproductive: insects, disease, weather
  */
@@ -105,7 +105,7 @@ public class stageProgressBar : MonoBehaviour
                 }
                 break;
 
-            case TurnPhase.Vegatative:
+            case TurnPhase.Vegetative:
                 if (i == 0 && !inscBought) {
                     inscBought = true;
                     nextStage();

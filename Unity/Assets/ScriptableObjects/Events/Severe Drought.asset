@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e0cb2fb4c4a50429a354e37a813dc8, type: 3}
+  m_Name: Severe Drought
+  m_EditorClassIdentifier: 
+  eventName: Severe Drought
+  probability: 0.13
+  eventDescription: Drought hits your crops
+  modifiers:
+  - eventName: Severe Drought
+    phaseName: Reproductive
+    defaultImpact: -0.45
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 3
+    activeDuration: 0
+    appliedTurnPhase: 0
+  activeMod:
+    eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
+    appliedTurnPhase: 0

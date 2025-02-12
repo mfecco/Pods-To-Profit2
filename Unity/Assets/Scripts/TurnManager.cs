@@ -340,7 +340,7 @@ public class TurnManager : MonoBehaviour
         case TurnPhase.Cotyledon:
           break;
 
-        case TurnPhase.Vegatative:
+        case TurnPhase.Vegetative:
           break;
 
         case TurnPhase.Fertilizer:
@@ -473,7 +473,7 @@ public class TurnManager : MonoBehaviour
           yearText.text = "Year " + years;
           Debug.Log(current);
           
-         randomEventHandler.HandleRandomEvent(current);
+         randomEventHandler.PullEvent(current);
 
           break;
 
@@ -513,7 +513,7 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
           
-          randomEventHandler.HandleRandomEvent(current);
+          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -553,16 +553,16 @@ public class TurnManager : MonoBehaviour
             text = weather[UnityEngine.Random.Range(0, 3)];
             yieldPercent *= weatherYieldModifier;
           }
-          cotyledonWeatherRandomChanceText.text = text;
+          //cotyledonWeatherRandomChanceText.text = text;
 
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
 
-          randomEventHandler.HandleRandomEvent(current);
+          randomEventHandler.PullEvent(current);
 
           break;
 
-        case TurnPhase.Vegatative:
+        case TurnPhase.Vegetative:
           /*
             Plants should show second level of graphic
             THINGS FOR THIS PHASE
@@ -576,7 +576,7 @@ public class TurnManager : MonoBehaviour
             destroyPlant();
             text ="Oh no, you lost a plant to disease!";
           }
-          vegDiseaseRandomChanceText.text = text;
+          //vegDiseaseRandomChanceText.text = text;
 
           text = "Looks like insects aren't a problem!";
 
@@ -585,7 +585,7 @@ public class TurnManager : MonoBehaviour
             destroyPlant();
             text ="Oh no, you lost a plant to insects!";
           }
-          vegDiseaseRandomChanceText.text = text;
+          //vegDiseaseRandomChanceText.text = text;
 
           plants = GameObject.FindGameObjectsWithTag("Plant");
           foreach(GameObject p in plants)
@@ -599,7 +599,7 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
 
-          randomEventHandler.HandleRandomEvent(current);
+          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -626,7 +626,7 @@ public class TurnManager : MonoBehaviour
           Debug.Log(current);
           
           
-          randomEventHandler.HandleRandomEvent(current);
+          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -680,7 +680,7 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
           
-          randomEventHandler.HandleRandomEvent(current);
+          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -698,7 +698,7 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
           
-          randomEventHandler.HandleRandomEvent(current);
+          randomEventHandler.PullEvent(current);
 
           break;
 
