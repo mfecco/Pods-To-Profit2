@@ -10,4 +10,12 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+    public void exitGame()
+    {
+       #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+       #else
+        Application.Quit();
+       #endif
+    }
 }
