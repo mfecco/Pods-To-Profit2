@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,24 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask tileLayerMask = new LayerMask();
     [SerializeField] private Transform debugTransform;
-
+    
+    public event EventHandler<ChangeTileUVEventArgs> ChangeTileUV;
+    public class ChangeTileUVEventArgs : EventArgs {
+        public int newUV;
+        public HexCell selectedTile;
+    }
     
     private HexCell selectedTile;
-    private TileInteractable selectedTool;
+    [SerializeField] private TileInteractable selectedTool; //NOTE: This is only SerializeField for testing, remove once tools are finished
+
+    //Instances will allow proper public event handling (SetUVsRuntime for example)
+    private void Awake() {
+        if (Instance != null) {
+            Debug.LogError("There is more than one Player instance");
+        }
+        Instance = this;
+    }
+
     void Start()
     {
         //Player becomes a listner/subscriber to GameInput's OnInteractAction event
@@ -31,22 +46,25 @@ public class Player : MonoBehaviour
         }
 
     }
+    
+    public void SetTileUV(int newUV, HexCell selectedTile){
+        ChangeTileUV?.Invoke(this, new ChangeTileUVEventArgs{
+            newUV = newUV,
+            selectedTile = selectedTile
+        });
+    }
 
     private void Update() {
         HandleInteractions();
     }
 
     private void HandleInteractions() {
-        Vector3 pos = new Vector3(200, 200, 0);
-        Ray ray2 = mainCamera.ScreenPointToRay(pos);
-        Debug.DrawRay(ray2.origin, ray2.direction * 10, Color.green);
-        
+
+        //Fire a raycast from the camera in the direction of the mouse
+        //On collision with a tile, set that tile to the currently selectedTile
         Ray ray = mainCamera.ScreenPointToRay(gameInput.GetMouseVector());
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
-        Debug.Log(ray.GetPoint(400));
 
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, tileLayerMask)){
-            Debug.Log(raycastHit.transform);
             if (raycastHit.transform.TryGetComponent(out HexCell hexCell)) {
                 if(hexCell != selectedTile){
                     SetSelectedTile(hexCell);
@@ -55,14 +73,12 @@ public class Player : MonoBehaviour
             SetSelectedTile(null);
             }
         } else {
-            Debug.Log("NOTHING");
             SetSelectedTile(null);
         }
     }
 
     private void SetSelectedTile(HexCell selectedTile) {
         this.selectedTile = selectedTile;
-        Debug.Log(selectedTile);
         /*
         Maija - Below is a good event to keep in mind in case we want tiles to have a selected tile 
         animation or texture when the user hovers over a new tile, such as a bounce or slight glow
@@ -73,5 +89,14 @@ public class Player : MonoBehaviour
             selectedTile = selectedTile
         });
         */
+    }
+
+    //public so that buttons may access
+    public void SetSelectedTool(TileInteractable selectedTool) {
+        this.selectedTool = selectedTool;
+    }
+
+    public HexCell GetSelectedTile(){
+        return selectedTile;
     }
 }

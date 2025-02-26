@@ -41,8 +41,6 @@ public class TurnManager : MonoBehaviour
   //added RandomEventHandler and 7 references in activeTurn() by Matt Fecco 
   //this should be only changes made to implement as of now.
     public RandomEventHandler randomEventHandler;
-    public HexMapEditor editor;
-    public HexGrid grid;
     public TurnPhase current;
     // public TMP_Text phaseText;
     public GameObject[] turnPanels;
@@ -724,7 +722,7 @@ public class TurnManager : MonoBehaviour
         {
           Destroy(p);
         }
-        grid.resetCellColors();
+        //rest all cells removed here, implement new version when TurnManager
         years++;
         sale.interactable = false;
         current = TurnPhase.Preplant;
@@ -813,38 +811,6 @@ public class TurnManager : MonoBehaviour
       }
     }
 
-    public void tillSelected()
-    {
-      
-      // Old code commented out.
-      //editor.SelectColor(tillType);
-
-      TillButton.GetComponent<Image>().color = Color.white;
-      //Make conventional tilling brown and conservation tilling green
-      if (tillType2 == 0) {
-        editor.SelectColor(3);
-      }
-      else if (tillType2 == 2) {
-        editor.SelectColor(2);
-      }
-    }
-
-    public bool tilling()
-    { /* This old code changes the player's money
-      if(current == TurnPhase.Planting && inventory.money >= perSeedBasePlantPrice)
-      {
-        return inventory.changeMoney(perSeedBasePlantPrice * -1);
-      }
-      return false; */
-      /* This new code changed the amount of seed in inventory */
-      if(current == TurnPhase.Planting && inventory.money >= perSeedBasePlantPrice)
-      {
-        Debug.Log("tilling() inv.changeMoney()");
-        inventory.changeMoney(perSeedBasePlantPrice * -1);
-        return true;
-      }
-      return false;
-    }
 
    /* (KM) This is the old code that will eventually be deleted */
     /* preplantToggles list is [tractorYes, GMOYes, TillSub, TillNo, Rhizo, BioPest]
