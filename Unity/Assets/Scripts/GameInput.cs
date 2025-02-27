@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class GameInput : MonoBehaviour
 {
     public event EventHandler OnInteractAction;
+    public event EventHandler OnInteractActionCanceled;
     private PlayerInputActions playerInputActions;
 
     private void Awake(){
@@ -12,11 +13,16 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Enable();
 
         playerInputActions.Player.Interact.performed += Interact_performed;
+        playerInputActions.Player.Interact.canceled += Interact_canceled;
     }
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
         //checks if event listeners are null, then invokes OnInteractAction if !null
         OnInteractAction?.Invoke(this, EventArgs.Empty); 
+    }
+
+    private void Interact_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnInteractActionCanceled?.Invoke(this, EventArgs.Empty); 
     }
 
     public Vector2 GetMouseVector() {

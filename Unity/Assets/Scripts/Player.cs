@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     {
         //Player becomes a listner/subscriber to GameInput's OnInteractAction event
         gameInput.OnInteractAction += GameInput_OnInteractAction;
+        gameInput.OnInteractActionCanceled += GameInput_OnInteractActionCanceled;
     }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
@@ -45,6 +46,14 @@ public class Player : MonoBehaviour
             selectedTool.Interact(this); //sends player object as argument
         }
 
+    }
+
+    private void GameInput_OnInteractActionCanceled(object sender, System.EventArgs e){
+        //check if game is running once pausing is implemented
+        //alternatively, call this function automatically when game is paused
+        if (selectedTile != null && selectedTool != null){
+            selectedTool.Cancel();
+        }
     }
     
     public void SetTileUV(int newUV, HexCell selectedTile){

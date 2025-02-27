@@ -11,12 +11,29 @@ public class TillInteractable : TileInteractable
     
     private int tillCost = -500; //500 is an arbitrary value
 
+    private Player player;
+
     public override void Interact(Player player){
+        this.player = player;
+        interacting = true;
+
+    }
+
+    public override void Cancel(){
+        interacting = false;
+        player = null;
+    }
+    public override void HandleInteractions(){
         selectedTile = player.GetSelectedTile();
         if(!selectedTile.getTilled()){
             inventoryManager.changeMoney(tillCost);
             selectedTile.setTilled(true);
             player.SetTileUV(TILL_UV, selectedTile);
+        }
+    }
+    private void Update() {
+        if(interacting){
+            HandleInteractions();
         }
     }
 

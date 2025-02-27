@@ -11,8 +11,20 @@ public class SeedInteractable : TileInteractable
     //it will start as null and will be set by buttons or back to null once none are in inventory
     [SerializeField] private SeedObjectSO selectedSeedObjectSO;
     [SerializeField] private TurnManager turnManager;
+    private Player player;
 
     public override void Interact(Player player){
+        this.player = player;
+        interacting = true;
+
+    }
+
+    public override void Cancel(){
+        interacting = false;
+        player = null;
+    }
+
+    public override void HandleInteractions(){
         //if there is a selectedSeed 
         if(selectedSeedObjectSO != null){
             selectedTile = player.GetSelectedTile();
@@ -28,6 +40,11 @@ public class SeedInteractable : TileInteractable
                 //TODO: if there are no more seeds of the same type in inventory, set selectedSeed to null
                 //alternatively, set the selectedTool to null (if you do this, remove the selectedSeed != null line on line 14)
             }
+        }
+    }
+    private void Update() {
+        if(interacting){
+            HandleInteractions();
         }
     }
 }
