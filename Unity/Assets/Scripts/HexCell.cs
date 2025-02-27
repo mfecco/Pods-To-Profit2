@@ -7,8 +7,39 @@ using UnityEngine;
 */
 public class HexCell : MonoBehaviour
 {
-  public bool tilled = false;
-  public bool fungicide = false;
-  //Maija - etc... (implement the rest of the attributes later when we know what we're doing)
-	public GameObject plant;
+  [SerializeField] private Transform plantPoint;
+  private SeedObject seedObject;
+
+
+
+  private bool tilled = false;
+  private bool fungicide = false;
+
+  public bool getTilled(){
+    return tilled;
+  }
+
+  public void setTilled(bool tillBool){
+    tilled = tillBool;
+  }
+
+//adapted from CodeMonkey's Kitchen Chaos game tutorial
+  public Transform GetSeedObjectFollowTransform() {
+    return plantPoint;
+  }
+  public void SetSeedObject(SeedObject seedObject) {
+    this.seedObject = seedObject;
+  }
+
+  public SeedObject GetSeedObject() {
+    return seedObject;
+  }
+
+  public void ClearSeedObject() {
+    seedObject = null;
+  }
+
+  public bool HasSeedObject() {
+    return seedObject != null;
+  }  
 }

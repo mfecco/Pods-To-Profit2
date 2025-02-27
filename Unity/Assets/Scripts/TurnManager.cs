@@ -1134,4 +1134,9 @@ public class TurnManager : MonoBehaviour
       float salePrice = perPlantSaleAmount * count * yieldPercent;
       inventory.changeMoney(salePrice);
     }
+
+    //Maija's Scripts - Do not remove
+    public TurnPhase getCurrentPhase(){
+      return current;
+    }
 }

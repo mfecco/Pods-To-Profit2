@@ -221,9 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c91a1546248d1e4392681396be0e78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilled: 0
-  fungicide: 0
-  plant: {fileID: 5253998943865620241, guid: d484b9f76490dde48ad80efcca3326c8, type: 3}
+  plantPoint: {fileID: 1912285604755194000}
 --- !u!65 &1111605435798200348
 BoxCollider:
   m_ObjectHideFlags: 0
