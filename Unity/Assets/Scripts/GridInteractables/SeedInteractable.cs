@@ -6,7 +6,10 @@ public class SeedInteractable : TileInteractable
 {
 
     private HexCell selectedTile;
-    private SeedObject selectedSeed;
+
+    //Once buttons are functional, remove the SerializeField from selectedSeed
+    //it will start as null and will be set by buttons or back to null once none are in inventory
+    [SerializeField] private SeedObject selectedSeed;
     [SerializeField] private TurnManager turnManager;
 
     public override void Interact(Player player){
@@ -24,17 +27,5 @@ public class SeedInteractable : TileInteractable
             }
         }
     }
-    /*
-    private int tillCost = -500; //500 is an arbitrary value
-
-    public override void Interact(Player player){
-        selectedTile = player.GetSelectedTile();
-        if(!selectedTile.tilled){
-            inventoryManager.changeMoney(tillCost);
-            selectedTile.tilled = true;
-            player.SetTileUV(TILL_UV, selectedTile);
-        }
-    }
-    */
 }
 
