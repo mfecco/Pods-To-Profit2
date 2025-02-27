@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e23cd5c1d7d8e42ad2a159b0b44b05, type: 3}
   m_Name: OrganicSeed
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5253998943865620242, guid: d484b9f76490dde48ad80efcca3326c8, type: 3}
+  prefab: {fileID: 5253998943865620241, guid: d484b9f76490dde48ad80efcca3326c8, type: 3}
   sprite: {fileID: 0}
   objectName: OrganicSeeds
   purchasePrice: 500

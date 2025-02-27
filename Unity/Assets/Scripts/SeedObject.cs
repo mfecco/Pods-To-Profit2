@@ -30,4 +30,14 @@ public class SeedObject : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    public static SeedObject SpawnSeedObject(SeedObjectSO seedObjectSO, HexCell seedObjectParent){
+        Transform seedObjectTransform = Instantiate(seedObjectSO.prefab);
+
+        SeedObject seedObject = seedObjectTransform.GetComponent<SeedObject>();
+
+        seedObject.SetSeedObjectParent(seedObjectParent);
+
+        return seedObject;
+    }
 }

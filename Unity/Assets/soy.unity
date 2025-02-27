@@ -27742,6 +27742,14 @@ PrefabInstance:
       propertyPath: turnManager
       value: 
       objectReference: {fileID: 1477915479}
+    - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+      propertyPath: selectedSeed
+      value: 
+      objectReference: {fileID: -6945267109273207425, guid: 1d03eef36d9f812429ec7129409cc54c, type: 3}
+    - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+      propertyPath: selectedSeedObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 951202fd933332d499685ed03a817c32, type: 2}
     - target: {fileID: 2229175783238672718, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -27797,6 +27805,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2229175783238672718, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
   m_PrefabInstance: {fileID: 772838123}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &772838125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+  m_PrefabInstance: {fileID: 772838123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606412696b2bd0340a1fe45e6af4c9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &773538685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5200878037111384602, guid: a856d101ea84d704abf9bb8a8ee0c125, type: 3}
@@ -30157,17 +30176,6 @@ PrefabInstance:
       objectReference: {fileID: 504896729}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f34e94dc7f4d27e46aca142de48995ec, type: 3}
---- !u!114 &848932091 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6188835035284894312, guid: f34e94dc7f4d27e46aca142de48995ec, type: 3}
-  m_PrefabInstance: {fileID: 848932090}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137edb525cce595469130aad9016cdd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &848932092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5261252947215968, guid: f34e94dc7f4d27e46aca142de48995ec, type: 3}
@@ -76142,7 +76150,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   debugTransform: {fileID: 8862633107828519910, guid: fd10fe279033e7140beda3e68cd84f8a, type: 3}
-  selectedTool: {fileID: 848932091}
+  selectedTool: {fileID: 772838125}
 --- !u!4 &2033549433
 Transform:
   m_ObjectHideFlags: 0
