@@ -11,7 +11,6 @@ public class SeedObject : MonoBehaviour
         return seedObjectSO;
     }
 
-    //SetSeedObjectParent is called in SeedInteractable
     public void SetSeedObjectParent(HexCell seedObjectParent){
         this.seedObjectParent = seedObjectParent;
 
@@ -32,10 +31,11 @@ public class SeedObject : MonoBehaviour
     }
 
     public static SeedObject SpawnSeedObject(SeedObjectSO seedObjectSO, HexCell seedObjectParent){
-        Transform seedObjectTransform = Instantiate(seedObjectSO.prefab);
+        GameObject seedGameObject = Instantiate(seedObjectSO.prefab);
 
-        SeedObject seedObject = seedObjectTransform.GetComponent<SeedObject>();
+        SeedObject seedObject = seedGameObject.GetComponent<SeedObject>();
 
+        Debug.Log(seedObject);
         seedObject.SetSeedObjectParent(seedObjectParent);
 
         return seedObject;

@@ -11,7 +11,7 @@ public class SeedObjectSO : ScriptableObject {
         Conventional
     }
 
-    public Transform prefab;
+    public GameObject prefab;
     public Sprite sprite;
     public string objectName;
     public int purchasePrice;
