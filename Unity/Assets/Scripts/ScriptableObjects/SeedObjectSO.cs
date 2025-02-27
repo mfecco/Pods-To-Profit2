@@ -4,15 +4,16 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "SeedObject", menuName = "Game/SeedObject")]
 public class SeedObjectSO : ScriptableObject {
-
-    public Transform prefab;
-    public Sprite sprite;
-    public string objectName;
-    public int purchasePrice;
-    public enum seedType{
+    public enum seedTypes
+    {
         Organic,
         Sustainable,
         Conventional
     }
 
+    public Transform prefab;
+    public Sprite sprite;
+    public string objectName;
+    public int purchasePrice;
+    public seedTypes seedType;
 }
