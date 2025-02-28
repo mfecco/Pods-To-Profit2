@@ -43,10 +43,10 @@ public class Player : MonoBehaviour
         
         Ray ray = mainCamera.ScreenPointToRay(gameInput.GetMouseVector());
         Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
-        Debug.Log(ray.GetPoint(400));
+        // Debug.Log(ray.GetPoint(400));
 
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, tileLayerMask)){
-            Debug.Log(raycastHit.transform);
+            // Debug.Log(raycastHit.transform);
             if (raycastHit.transform.TryGetComponent(out HexCell hexCell)) {
                 if(hexCell != selectedTile){
                     SetSelectedTile(hexCell);
@@ -55,14 +55,14 @@ public class Player : MonoBehaviour
             SetSelectedTile(null);
             }
         } else {
-            Debug.Log("NOTHING");
+            // Debug.Log("NOTHING");
             SetSelectedTile(null);
         }
     }
 
     private void SetSelectedTile(HexCell selectedTile) {
         this.selectedTile = selectedTile;
-        Debug.Log(selectedTile);
+        // Debug.Log(selectedTile);
         /*
         Maija - Below is a good event to keep in mind in case we want tiles to have a selected tile 
         animation or texture when the user hovers over a new tile, such as a bounce or slight glow

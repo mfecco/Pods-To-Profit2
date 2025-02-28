@@ -41,8 +41,8 @@ public class InventoryManager : MonoBehaviour
     public bool ownTractor = false;
     public bool brokenTractor = false;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
         moneyText.text = "$" + money;
         shopMoneyText.text = "$" + money;
