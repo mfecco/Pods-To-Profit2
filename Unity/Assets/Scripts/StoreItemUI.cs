@@ -28,6 +28,7 @@ public class StoreItemUI : MonoBehaviour
 	{
 		Debug.Log("Price Button clicked: " + storeItem.itemName + " - $" + storeItem.price);
 		PlayerStats.Instance.Spend(storeItem.price);
+		InventoryController.Instance.AddItem(storeItem, 1);
 		// You can add any logic you want to execute when the price button is clicked
 	}
 

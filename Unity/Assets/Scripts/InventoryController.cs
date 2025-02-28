@@ -24,7 +24,7 @@ public class InventoryController : MonoBehaviour
 	// Add more of an item to the inventory
 	public void AddItem(StoreItem item, int quantity)
 	{
-		if (inventory.ContainsKey(quantity))
+		if (inventory.ContainsKey(item.itemId))
 		{
 			inventory[item.itemId] += quantity;
 		}
@@ -32,8 +32,7 @@ public class InventoryController : MonoBehaviour
 		{
 			inventory[item.itemId] = quantity;
 		}
-
-		Debug.Log($"Added {quantity} item {item.itemName}(s) Total: {inventory[item.itemId]}");
+		Debug.Log($"Added {quantity} item {item.itemName}(s) Total: {GetItemQuantity(item)}");
 	}
 
 	// TODO: add method to decrease amount of item
