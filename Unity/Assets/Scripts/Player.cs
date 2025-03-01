@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 //Maija - Important to note: Currently, there is nothing else implemented with player
 //aside from what tools is selected and event calls that correspond to player action. 
@@ -68,6 +69,12 @@ public class Player : MonoBehaviour
     }
 
     private void HandleInteractions() {
+
+        // (RL) If the pointer is over any game object (UI)
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
 
         //Fire a raycast from the camera in the direction of the mouse
         //On collision with a tile, set that tile to the currently selectedTile
