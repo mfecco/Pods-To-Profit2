@@ -27,8 +27,13 @@ using TMPro;
  * there are also a couple unnused slots that just have buttons recycled from the old code
  * but are not actually used for anyting (tool and sell). 
  */
+ [System.Serializable] public class SlotData {
+    public GameObject slotObject;  // The GameObject that represents the UI slot
+    public string itemID;        // A string to hold the item name or other relevant data
+}
 public class toolMenu : MonoBehaviour
 {
+    public SlotData[] sliderSlots = new SlotData[9];
     // true means extended, false means collapsed (hidden)
     public bool menuBool = true;    
     public bool[] invBools;
@@ -68,7 +73,7 @@ public class toolMenu : MonoBehaviour
      * 3 - 5 = fert slots 1 - 3
      * 6 - 8 = pest slots 1 - 3
      */
-    public GameObject[] sliderSlots = new GameObject[9];
+    // public GameObject[] sliderSlots = new GameObject[9];
 
     /* (HP)
      * I don't yet have the actual sprites for the three choices of seeds, so when you get
@@ -87,81 +92,99 @@ public class toolMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Moves the tool menu extension up/down depending on menuBool
-        if (menuBool == false && transform.position.y > -65) {
-            transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
-            // set all three to false to close the sliders
-            invBools[0] = false;
-            invBools[1] = false;
-            invBools[2] = false;
-            index = -1;
-        } else if (menuBool == true && transform.position.y < 248) {
-            transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
-        }
+        MoveMenu();
 
         // moves the indexed slider out/in depending on its bool 
         if (index > -1 && invBools[index] == false) {
-            // close slider at index
-            if (sliders[index].transform.localPosition.x < 1033)    
-                sliders[index].transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-            // close the other two if still open
-            if (sliders[nextIndex(index)].transform.localPosition.x < 1033)             
-                sliders[nextIndex(index)].transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-            if (sliders[nextIndex(nextIndex(index))].transform.localPosition.x < 1033)  
-                sliders[nextIndex(nextIndex(index))].transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            closeSliders(index);
         } else if (index > -1 && invBools[index] == true) {
-            // checks sum of types to set how far to open the slider
-            if (invMan.inventory[index][invMan.inventory[index].Length - 1] <= 1) {
-                pos = showOne;      
-            } else if (invMan.inventory[index][invMan.inventory[index].Length - 1] == 2) {
-                pos = showTwo;
-            } else {
-                pos = showThree;    
-            }                                                                            
-            
-            // open slider at index
-            if (sliders[index].transform.localPosition.x > pos)     
-                sliders[index].transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-            // close the other two if still open
-            if (sliders[nextIndex(index)].transform.localPosition.x < 1033)             
-                sliders[nextIndex(index)].transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-            if (sliders[nextIndex(nextIndex(index))].transform.localPosition.x < 1033)  
-                sliders[nextIndex(nextIndex(index))].transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            openSlider(index);
+            // Debug.Log("OPEN " + index);
         }
 
         // updates the images and numbers of each slot as needed
-        if (index > -1 && invMan.inventory[index][invMan.inventory[index].Length - 1] > 0) {
+        if (index > -1 && invMan.inventory[index][invMan.inventory[index].Length - 1] > 0)
+        {
             int i = 0; // the while() loops until i is the index of a status that is > 0
-            // if only two showing, find and display the images and numbers of the two choices > 0
-            if (invMan.inventory[index][invMan.inventory[index].Length - 1] == 2) {
-                sliderSlots[index * 3].GetComponentsInChildren<Image>()[1].enabled = true;
-                for (int j = 0; j < 2 && i < 3; j++) {
-                    while (invMan.inventory[index][i] == 0) i++;
-                    sliderSlots[(index * 3) + j].GetComponentInChildren<TMP_Text>().text = "x" + invMan.inventory[index][i];
-                    sliderSlots[(index * 3) + j].GetComponentsInChildren<Image>()[1].sprite = sliderSprites[(index * 3) + i];
-                    i++;
-                }
-                // sliderSlots[index * 3].GetComponentInChildren<TMP_Text>().text = "x" + inventory[index][i++];
+            int slotsToShow = invMan.inventory[index][invMan.inventory[index].Length - 1];
+            // Debug.Log("SLOTS OPEN: " + slotsToShow);
+            // Case: Two slots showing
+            if (slotsToShow == 2)
+            {
 
-            // else if all three showing so display all three in the proper order
-            } else if (invMan.inventory[index][invMan.inventory[index].Length - 1] == 3) {
-                sliderSlots[index * 3].GetComponentsInChildren<Image>()[1].enabled = true;
-                for (int j = 0; j < 3; j++) {
-                    sliderSlots[(index * 3) + j].GetComponentsInChildren<Image>()[1].sprite = sliderSprites[(index * 3) + j];
-                    sliderSlots[(index * 3) + j].GetComponentInChildren<TMP_Text>().text = "x" + invMan.inventory[index][j];
+                // Show the first slot
+                while (i < 3 && invMan.inventory[index][i] == 0) i++; // Find the first non-zero slot
+                if (i < 3) 
+                {
+                    sliderSlots[index * 3].slotObject.GetComponentsInChildren<Image>()[1].enabled = true;
+                    sliderSlots[index * 3].slotObject.GetComponentInChildren<TMP_Text>().text = "x" + invMan.inventory[index][i];
+                    sliderSlots[index * 3].slotObject.GetComponentsInChildren<Image>()[1].sprite = sliderSprites[(index * 3) + i];
+                    sliderSlots[index * 3].itemID = index.ToString() + (((index * 3) + i) % 3).ToString() + (i == 0 ? "0" : "1");
+                    i++; // Move to the next item
                 }
-            // else only one slot showing, so find which choice and display its image and number
-            } else {
+                // Show the second slot
+                while (i < 3 && invMan.inventory[index][i] == 0) i++; // Find the second non-zero slot
+                if (i < 3)
+                {
+                    sliderSlots[index * 3 + 1].slotObject.GetComponentsInChildren<Image>()[1].enabled = true;
+                    sliderSlots[(index * 3) + 1].slotObject.GetComponentInChildren<TMP_Text>().text = "x" + invMan.inventory[index][i];
+                    sliderSlots[(index * 3) + 1].slotObject.GetComponentsInChildren<Image>()[1].sprite = sliderSprites[(index * 3) + i];
+                    sliderSlots[index * 3 + 1].itemID = index.ToString() + ((index * 3 + i) % 3).ToString() + (i == 0 ? "0" : "1");
+                }
+            }
+            else if (slotsToShow == 3)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    sliderSlots[index * 3 + j].slotObject.GetComponentsInChildren<Image>()[1].enabled = true;
+                    sliderSlots[(index * 3) + j].slotObject.GetComponentsInChildren<Image>()[1].sprite = sliderSprites[(index * 3) + j];
+                    sliderSlots[(index * 3) + j].slotObject.GetComponentInChildren<TMP_Text>().text = "x" + invMan.inventory[index][j];
+                    sliderSlots[index * 3 + j].itemID = index.ToString() + ((index * 3 + j) % 3).ToString() + (j == 0 ? "0" : "1");
+                }
+                
+
+                // Case: One slot showing
+            }
+            else
+            {
                 while (invMan.inventory[index][i] == 0) i++;
-                sliderSlots[index * 3].GetComponentsInChildren<Image>()[1].enabled = true;
-                sliderSlots[index * 3].GetComponentsInChildren<Image>()[1].sprite = sliderSprites[(index * 3) + i];
-                sliderSlots[index * 3].GetComponentInChildren<TMP_Text>().text = "x" + invMan.inventory[index][i];
+                sliderSlots[index * 3].slotObject.GetComponentsInChildren<Image>()[1].enabled = true;
+                sliderSlots[index * 3].slotObject.GetComponentsInChildren<Image>()[1].sprite = sliderSprites[(index * 3) + i];
+                sliderSlots[index * 3].slotObject.GetComponentInChildren<TMP_Text>().text = "x" + invMan.inventory[index][i];
+                sliderSlots[index * 3].itemID = index.ToString() + ((index * 3 + i) % 3).ToString() + (i == 0 ? "0" : "1");
+            }
+
+        }
+        else
+        {
+            // Case: 0 slots showing - Disable UI elements
+            if (index > -1) {
+            for (int j = 0; j < 3; j++)
+            {
+                sliderSlots[(index * 3) + j].slotObject.GetComponentsInChildren<Image>()[1].enabled = false;
+                sliderSlots[(index * 3) + j].slotObject.GetComponentInChildren<TMP_Text>().text = "";
+                sliderSlots[index * 3 + j].itemID = "";
+            }
             }
         }
+
     }
 
     // the cog wheel button calls this function, which just toggles the extension up and down
-    public void toggleMenu() {
+    public void toggleMenu()
+    {
+        StartCoroutine(CloseSlidersThenToggleMenu());
+    }
+
+    private IEnumerator CloseSlidersThenToggleMenu()
+    {
+        // Set all sliders to false
+        for (int i = 0; i < invBools.Length; i++) invBools[i] = false;
+
+        // Wait for sliders to close
+        yield return StartCoroutine(CloseSlidersCoroutine(0));
+
+        // Now toggle menuBool after sliders are closed
         menuBool = !menuBool;
     }
 
@@ -176,5 +199,146 @@ public class toolMenu : MonoBehaviour
     // rotates the index from 0 -> 1 -> 2 -> 0 
     int nextIndex(int i){ 
         return (i + 1) % 3;
+    }
+
+    private void MoveMenu()
+    {
+        float targetY = menuBool ? 248 : -65; // Target position based on menu state
+        float step = moveSpeed * Time.deltaTime;
+
+        transform.position = new Vector3(
+            transform.position.x,
+            Mathf.MoveTowards(transform.position.y, targetY, step),
+            transform.position.z
+        );
+
+        // Ensure sliders close only when the menu is fully closed
+        if (!menuBool && transform.position.y == targetY)
+        {
+            invBools[0] = false;
+            invBools[1] = false;
+            invBools[2] = false;
+            index = -1;
+        }
+    }
+
+    private IEnumerator CloseSlidersCoroutine(int i)
+    {
+        bool allClosed = false;
+        float targetX = 1033;
+
+        while (!allClosed)
+        {
+            float step = moveSpeed * Time.deltaTime;
+
+            // Move the target slider towards its close position
+            sliders[i].transform.localPosition = new Vector3(
+                Mathf.MoveTowards(sliders[i].transform.localPosition.x, targetX, step),
+                sliders[i].transform.localPosition.y,
+                sliders[i].transform.localPosition.z
+            );
+
+            // Close the other two sliders
+            sliders[nextIndex(i)].transform.localPosition = new Vector3(
+                Mathf.MoveTowards(sliders[nextIndex(i)].transform.localPosition.x, targetX, step),
+                sliders[nextIndex(i)].transform.localPosition.y,
+                sliders[nextIndex(i)].transform.localPosition.z
+            );
+
+            sliders[nextIndex(nextIndex(i))].transform.localPosition = new Vector3(
+                Mathf.MoveTowards(sliders[nextIndex(nextIndex(i))].transform.localPosition.x, targetX, step),
+                sliders[nextIndex(nextIndex(i))].transform.localPosition.y,
+                sliders[nextIndex(nextIndex(i))].transform.localPosition.z
+            );
+
+            // Check if all sliders are closed
+            allClosed = sliders[i].transform.localPosition.x == targetX &&
+                        sliders[nextIndex(i)].transform.localPosition.x == targetX &&
+                        sliders[nextIndex(nextIndex(i))].transform.localPosition.x == targetX;
+
+            yield return null; // Wait for the next frame before checking again
+        }
+    }
+
+    private void closeSliders(int i)
+    {
+        float targetX = 1033;
+        float step = moveSpeed * Time.deltaTime; // Consistent movement speed per frame
+
+        sliders[i].transform.localPosition = new Vector3(
+            Mathf.MoveTowards(sliders[i].transform.localPosition.x, targetX, step),
+            sliders[i].transform.localPosition.y,
+            sliders[i].transform.localPosition.z
+        );
+
+        sliders[nextIndex(i)].transform.localPosition = new Vector3(
+            Mathf.MoveTowards(sliders[nextIndex(i)].transform.localPosition.x, targetX, step),
+            sliders[nextIndex(i)].transform.localPosition.y,
+            sliders[nextIndex(i)].transform.localPosition.z
+        );
+
+        sliders[nextIndex(nextIndex(i))].transform.localPosition = new Vector3(
+            Mathf.MoveTowards(sliders[nextIndex(nextIndex(i))].transform.localPosition.x, targetX, step),
+            sliders[nextIndex(nextIndex(i))].transform.localPosition.y,
+            sliders[nextIndex(nextIndex(i))].transform.localPosition.z
+        );
+    }
+
+    private void openSlider(int i)
+    {
+        // Determine the position based on inventory count
+        if (invMan.inventory[i][invMan.inventory[i].Length - 1] <= 1)
+        {
+            pos = showOne;
+        }
+        else if (invMan.inventory[i][invMan.inventory[i].Length - 1] == 2)
+        {
+            pos = showTwo;
+        }
+        else
+        {
+            pos = showThree;
+        }
+
+        // Define movement step
+        float step = moveSpeed * Time.deltaTime;
+
+        // Move the target slider towards its final position
+        sliders[i].transform.localPosition = new Vector3(
+            Mathf.MoveTowards(sliders[i].transform.localPosition.x, pos, step),
+            sliders[i].transform.localPosition.y,
+            sliders[i].transform.localPosition.z
+        );
+
+        // Close the other two sliders if still open
+        int next = nextIndex(i);
+        int nextNext = nextIndex(next);
+
+        sliders[next].transform.localPosition = new Vector3(
+            Mathf.MoveTowards(sliders[next].transform.localPosition.x, 1033, step),
+            sliders[next].transform.localPosition.y,
+            sliders[next].transform.localPosition.z
+        );
+
+        sliders[nextNext].transform.localPosition = new Vector3(
+            Mathf.MoveTowards(sliders[nextNext].transform.localPosition.x, 1033, step),
+            sliders[nextNext].transform.localPosition.y,
+            sliders[nextNext].transform.localPosition.z
+        );
+
+    }
+
+    public void OnInventoryButtonClick(int index)
+    {
+        // Check index bounds
+        if (index >= 0 && index < sliderSlots.Length)
+        {
+            invMan.changeInventory(sliderSlots[index].itemID + "-1");
+            Debug.Log("CLICKED " + sliderSlots[index].itemID + "-1");
+        }
+        else
+        {
+            Debug.LogError("Invalid index: " + index);
+        }
     }
 }

@@ -171,7 +171,20 @@ public class InventoryManager : MonoBehaviour
         } else {
             if (inventory[type][choice] >= amount) {
                 inventory[type][choice] -= amount;
+                Debug.Log("choice, type= " + type + ", " + choice);
+                if (choice == 0 && type == 0) Debug.Log("-1 Organic Seed");
+                if (choice == 1 && type == 0) Debug.Log("-1 Conventional Seeds");
+                if (choice == 2 && type == 0) Debug.Log("-1 GMO Seed");
+                if (choice == 0 && type == 1) Debug.Log("-1 Organic Fert");
+                if (choice == 1 && type == 1) Debug.Log("-1 Inorganic Fert");
+                if (inventory[type][choice] == 0) inventory[type][inventory[type].Length - 1]--;
             } else {
+                // (RL) c: 0 (Organic Seeds) 1 (Conventional) 2 (GMO)
+                if (choice == 0 && type == 0) Debug.Log("Not enough of Organic Seeds");
+                if (choice == 1 && type == 0) Debug.Log("Not enough of Conventional Seeds");
+                if (choice == 2 && type == 0) Debug.Log("Not enough of GMO Seeds");
+                if (choice == 0 && type == 1) Debug.Log("Not enough of Organic Fert");
+                if (choice == 1 && type == 1) Debug.Log("Not enough of Inorganic Fert");
                 // error message: "Not enough of {item} in inventory"
             }
         }

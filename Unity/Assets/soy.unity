@@ -11586,12 +11586,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.34901962}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7764706, g: 0.7490196, b: 0.6862745, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -11611,10 +11611,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1477915479}
-        m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: tillSelected
-        m_Mode: 1
+      - m_Target: {fileID: 2033549432}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetSelectedTool
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 955087024}
+          m_ObjectArgumentAssemblyTypeName: TileInteractable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1831520315}
+        m_TargetAssemblyTypeName: toolMenu, Assembly-CSharp
+        m_MethodName: OnInventoryButtonClick
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11622,7 +11634,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!4 &331395179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7743822285804282989, guid: 7fcbcdaa73be3e340b771e1d3095d958, type: 3}
@@ -15003,21 +15015,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f1978d785c2ab4386ae864c020f8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderSlots:
+  - slotObject: {fileID: 0}
+    itemID: 
+  - slotObject: {fileID: 0}
+    itemID: 
+  - slotObject: {fileID: 0}
+    itemID: 
+  - slotObject: {fileID: 0}
+    itemID: 
+  - slotObject: {fileID: 0}
+    itemID: 
+  - slotObject: {fileID: 0}
+    itemID: 
+  - slotObject: {fileID: 0}
+    itemID: 
+  - slotObject: {fileID: 0}
+    itemID: 
+  - slotObject: {fileID: 0}
+    itemID: 
   menuBool: 1
   invBools: 
   sliders: []
   invMan: {fileID: 0}
   moveSpeed: 5
-  sliderSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   sliderSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -15519,6 +15540,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2033549432}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetSelectedTool
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1081837930}
+          m_ObjectArgumentAssemblyTypeName: TileInteractable, Assembly-CSharp
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -35395,6 +35428,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953699458}
   m_CullTransparentMesh: 1
+--- !u!114 &955087024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+  m_PrefabInstance: {fileID: 772838123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606412696b2bd0340a1fe45e6af4c9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &957702352
 GameObject:
   m_ObjectHideFlags: 0
@@ -38913,12 +38957,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7764706, g: 0.7490196, b: 0.6862745, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -38938,18 +38982,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1477915479}
-        m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: tillSelected
-        m_Mode: 1
+      - m_Target: {fileID: 2033549432}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetSelectedTool
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 955087024}
+          m_ObjectArgumentAssemblyTypeName: TileInteractable, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1831520315}
+        m_TargetAssemblyTypeName: toolMenu, Assembly-CSharp
+        m_MethodName: OnInventoryButtonClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1030879943
 GameObject:
   m_ObjectHideFlags: 0
@@ -65610,12 +65666,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7764706, g: 0.7490196, b: 0.6862745, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -65635,18 +65691,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1477915479}
-        m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: tillSelected
-        m_Mode: 1
+      - m_Target: {fileID: 2033549432}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetSelectedTool
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 955087024}
+          m_ObjectArgumentAssemblyTypeName: TileInteractable, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1831520315}
+        m_TargetAssemblyTypeName: toolMenu, Assembly-CSharp
+        m_MethodName: OnInventoryButtonClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1706220629
 GameObject:
   m_ObjectHideFlags: 0
@@ -70512,6 +70580,7 @@ GameObject:
   - component: {fileID: 1831520314}
   - component: {fileID: 1831520313}
   - component: {fileID: 1831520315}
+  - component: {fileID: 1831520316}
   m_Layer: 5
   m_Name: toolMenuExtension
   m_TagString: Untagged
@@ -70604,6 +70673,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f1978d785c2ab4386ae864c020f8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderSlots:
+  - slotObject: {fileID: 331351095}
+    itemID: 
+  - slotObject: {fileID: 1705852704}
+    itemID: 
+  - slotObject: {fileID: 1026727244}
+    itemID: 
+  - slotObject: {fileID: 4036674}
+    itemID: 
+  - slotObject: {fileID: 894364347}
+    itemID: 
+  - slotObject: {fileID: 146870949}
+    itemID: 
+  - slotObject: {fileID: 1061448135}
+    itemID: 
+  - slotObject: {fileID: 1800847592}
+    itemID: 
+  - slotObject: {fileID: 1577343895}
+    itemID: 
   menuBool: 1
   invBools: 000000
   sliders:
@@ -70612,22 +70700,25 @@ MonoBehaviour:
   - {fileID: 740446786}
   invMan: {fileID: 504896729}
   moveSpeed: 500
-  sliderSlots:
-  - {fileID: 331351095}
-  - {fileID: 1705852704}
-  - {fileID: 1026727244}
-  - {fileID: 4036674}
-  - {fileID: 894364347}
-  - {fileID: 146870949}
-  - {fileID: 1061448135}
-  - {fileID: 1800847592}
-  - {fileID: 1577343895}
   sliderSprites:
   - {fileID: 21300000, guid: 594d026cb32233942a5fb29bad0bcf74, type: 3}
   - {fileID: 21300000, guid: afc6d5f7446a07e4ca4c9b320c3e98f8, type: 3}
   - {fileID: 21300000, guid: 3ae10f5dffbec5344a728b6f0a437416, type: 3}
   - {fileID: 21300000, guid: 229856b7ba981e942b26200063b98423, type: 3}
   - {fileID: 21300000, guid: b252eb8ffc30c444caf3f08bf6f1a40f, type: 3}
+--- !u!114 &1831520316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831520311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415b6cc686d32454b98c9e49f3106af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 504896729}
 --- !u!4 &1832743121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7743822285804282989, guid: 7fcbcdaa73be3e340b771e1d3095d958, type: 3}
@@ -77604,7 +77695,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   debugTransform: {fileID: 8862633107828519910, guid: fd10fe279033e7140beda3e68cd84f8a, type: 3}
-  selectedTool: {fileID: 1081837930}
+  selectedTool: {fileID: 955087024}
 --- !u!4 &2033549433
 Transform:
   m_ObjectHideFlags: 0
