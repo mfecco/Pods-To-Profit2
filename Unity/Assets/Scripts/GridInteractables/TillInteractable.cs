@@ -25,7 +25,7 @@ public class TillInteractable : TileInteractable
     }
     public override void HandleInteractions(){
         selectedTile = player.GetSelectedTile();
-        if(!selectedTile.getTilled()){
+        if(selectedTile != null && !selectedTile.getTilled()){
             inventoryManager.changeMoney(tillCost);
             selectedTile.setTilled(true);
             player.SetTileUV(TILL_UV, selectedTile);

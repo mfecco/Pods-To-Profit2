@@ -52,7 +52,9 @@ public class Player : MonoBehaviour
     private void GameInput_OnInteractActionCanceled(object sender, System.EventArgs e){
         //check if game is running once pausing is implemented
         //alternatively, call this function automatically when game is paused
-        if (selectedTile != null && selectedTool != null){
+
+        if (selectedTool != null)
+        {
             selectedTool.Cancel();
         }
     }
@@ -70,25 +72,59 @@ public class Player : MonoBehaviour
 
     private void HandleInteractions() {
 
-        // (RL) If the pointer is over any game object (UI)
-        //if (EventSystem.current.IsPointerOverGameObject())
-        //{
-        //    return;
-        //}
-
-        //Fire a raycast from the camera in the direction of the mouse
-        //On collision with a tile, set that tile to the currently selectedTile
-        Ray ray = mainCamera.ScreenPointToRay(gameInput.GetMouseVector());
-
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, tileLayerMask)){
-            if (raycastHit.transform.TryGetComponent(out HexCell hexCell)) {
-                if(hexCell != selectedTile){
-                    SetSelectedTile(hexCell);
-                }
-            } else {
-            SetSelectedTile(null);
+        /* (RL) If the pointer is over any game object (UI)
+         * If UI detection is not working properly (not allowing action even though no UI is there)
+         * Uncomment the commented code below to turn on debugging (prints out all UI objects mouse is hovering over).
+         * This will allow you to see which UI object is being detected and preventing the action.
+         */
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            if (selectedTile != null)
+            {
+                SetSelectedTile(null);
             }
-        } else {
+            //PointerEventData eventData = new PointerEventData(EventSystem.current)
+            //{
+            //    position = Input.mousePosition
+            //};
+
+            //List<RaycastResult> results = new List<RaycastResult>();
+            //EventSystem.current.RaycastAll(eventData, results);
+
+            //if (results.Count > 0)
+            //{
+            //    foreach (var result in results)
+            //    {
+            //        Debug.Log("UI Element Hit: " + result.gameObject.name);
+            //    }
+            //}
+            //else
+            //{
+            //    Debug.Log("UI Element Hit: (No valid UI objects detected)");
+            //}
+
+            return;
+        }
+            //Fire a raycast from the camera in the direction of the mouse
+            //On collision with a tile, set that tile to the currently selectedTile
+            Ray ray = mainCamera.ScreenPointToRay(gameInput.GetMouseVector());
+
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, tileLayerMask))
+            {
+                if (raycastHit.transform.TryGetComponent(out HexCell hexCell))
+                {
+                    if (hexCell != selectedTile)
+                    {
+                        SetSelectedTile(hexCell);
+                    }
+                }
+                else
+                {
+                    SetSelectedTile(null);
+                }
+            }
+        else
+        {
             SetSelectedTile(null);
         }
     }
