@@ -33,6 +33,7 @@ using TMPro;
 }
 public class toolMenu : MonoBehaviour
 {
+    public SeedInteractable seedInteractable;
     public SlotData[] sliderSlots = new SlotData[9];
     // true means extended, false means collapsed (hidden)
     public bool menuBool = true;    
@@ -333,7 +334,12 @@ public class toolMenu : MonoBehaviour
         // Check index bounds
         if (index >= 0 && index < sliderSlots.Length)
         {
-            invMan.changeInventory(sliderSlots[index].itemID + "-1");
+            // (RL) invMan.inventory[0][invMan.inventory[0].Length - 1] > 0 checks if there are any seed types in inventory available
+            if (index < 3 && invMan.inventory[0][invMan.inventory[0].Length - 1] > 0) {
+                seedInteractable.setSeedObjectSObyID(sliderSlots[index].itemID);
+                Debug.Log("ran with " + index);
+            }
+            // invMan.changeInventory(sliderSlots[index].itemID + "-1");
             Debug.Log("CLICKED " + sliderSlots[index].itemID + "-1");
         }
         else

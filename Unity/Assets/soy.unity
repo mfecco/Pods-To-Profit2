@@ -15015,6 +15015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f1978d785c2ab4386ae864c020f8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seedInteractable: {fileID: 0}
   sliderSlots:
   - slotObject: {fileID: 0}
     itemID: 
@@ -27968,6 +27969,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2033549433}
     m_Modifications:
     - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+      propertyPath: invMan
+      value: 
+      objectReference: {fileID: 504896729}
+    - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
       propertyPath: turnManager
       value: 
       objectReference: {fileID: 1477915479}
@@ -27976,9 +27981,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6945267109273207425, guid: 1d03eef36d9f812429ec7129409cc54c, type: 3}
     - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+      propertyPath: InventoryManager
+      value: 
+      objectReference: {fileID: 504896729}
+    - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
       propertyPath: selectedSeedObjectSO
       value: 
       objectReference: {fileID: 11400000, guid: 951202fd933332d499685ed03a817c32, type: 2}
+    - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+      propertyPath: seedObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 951202fd933332d499685ed03a817c32, type: 2}
+    - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+      propertyPath: seedObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a7215c5c5a210bb4291e2acc48d4cbca, type: 2}
+    - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+      propertyPath: seedObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f6da7ce10914ac4a9c624e422346f62, type: 2}
     - target: {fileID: 2229175783238672718, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -70673,6 +70694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f1978d785c2ab4386ae864c020f8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seedInteractable: {fileID: 955087024}
   sliderSlots:
   - slotObject: {fileID: 331351095}
     itemID: 
@@ -70718,7 +70740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415b6cc686d32454b98c9e49f3106af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 504896729}
 --- !u!4 &1832743121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7743822285804282989, guid: 7fcbcdaa73be3e340b771e1d3095d958, type: 3}
