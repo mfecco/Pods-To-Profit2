@@ -33,3 +33,4 @@ MonoBehaviour:
     defaultDuration: 0
     activeDuration: 0
     appliedTurnPhase: 0
+  distribution: 0.33

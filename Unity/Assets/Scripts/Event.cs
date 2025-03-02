@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,11 +14,30 @@ public class Event : ScriptableObject
     public string eventName;
     public float probability;
     public string eventDescription;
-    public Modifier[] modifiers;
-    public Modifier activeMod;
+    [SerializeField] private Modifier[] modifiers;
+    [SerializeField] private Modifier activeMod;
+    [SerializeField] private float distribution;
+    [SerializeField] private GameObject visualPrefab;
+    private List<GameObject> visualInstances = new List<GameObject>();
     
     //visual effects?
     //mitigation options?
+    public void spawnVisual(Vector3 position)
+    {
+        visualInstances.Add(Instantiate(visualPrefab, position, Quaternion.identity));
+    }
+
+    public void removeVisual()
+    {
+        foreach(var visual in visualInstances)
+        {
+            if (visual!=null)
+            {
+                Destroy(visual);
+            }
+        }
+        visualInstances.Clear();
+    }
 
     //debug check that all info is correct
     public void PrintDetails()
@@ -26,7 +46,7 @@ public class Event : ScriptableObject
     }
 
    //apply specific phase modifier for event 
-    public Modifier getModifier(TurnPhase currentPhase)
+    private Modifier getModifier(TurnPhase currentPhase)
     {
         
         foreach (var modifier in modifiers)
@@ -41,7 +61,32 @@ public class Event : ScriptableObject
         }   
         return null;
     }
+
+    public void setActiveMod(TurnPhase current)
+    {
+        activeMod = getModifier(current);
+    }
     public void clearActiveMod(){
         activeMod = null;
+    }
+
+    public float getDistribution()
+    {
+        return distribution;
+    }
+
+    public float getActiveImpact()
+    {
+        return activeMod.activeImpact;
+    }
+
+    public int getActiveDuration()
+    {
+        return activeMod.activeDuration;
+    }
+
+    public void triggerMod()
+    {
+        activeMod.modTick();
     }
 }

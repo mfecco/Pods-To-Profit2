@@ -16,7 +16,7 @@ public class InventoryManager : MonoBehaviour
 {
     public TurnManager turnManager;
 
-    public float money = 600000;
+    public float money = 10000;
     // public Text moneyTextDisplay;
     public int rhizobium = 0;
     public int pesticides = 0;

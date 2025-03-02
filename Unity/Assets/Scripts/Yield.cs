@@ -3,17 +3,21 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Schema;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "NewYield", menuName = "Game/Yield")]
 public class Yield : ScriptableObject
 {
     public float cropYield;
-    public float modifiedcropYield;
-    public List<Event> activeEvents = new List<Event>();
+    [SerializeField] private List<Event> activeEvents = new List<Event>();
     private List<Event> expiredEvents = new List<Event>();
+    [SerializeField] private List<HexCell> hexObjects = new List<HexCell>();
+    [SerializeField] private List<HexCell> plants;
     
 
     //this is good for when we implement mitigation options
@@ -24,66 +28,162 @@ public class Yield : ScriptableObject
         }
     
 }
-
-
-    //faster way to calculate modifier effect on yield.  multiply all the modifiers together i.e. a decrease in 30% is a 0.7 multiplier.
-    //if we use this, we might want to rethink way to write out effects in Unity.  If we do negative effects, we can just add 1 to all modifiers and multiply.
     public float calcYield()
     {
-        float totalMod = cropYield;
-        foreach (var e in activeEvents)
+        float total =0;
+        foreach (var hex in plants)
         {
-            totalMod = (e.activeMod.activeImpact + 1) * totalMod;
+            total += hex.yield.getBushels();
+            
         }
-
-        return totalMod;
+        return total;
     }
 
     //clears modifier list 
     public void initYield()
     {
-        //this is only for testing
-        cropYield = 1000;
-        modifiedcropYield = 0;
+
+        cropYield = 0;
         activeEvents.Clear();
         expiredEvents.Clear();
-        Debug.Log("Event list cleared in Crop Yield");
+        plants.Clear();
+        hexObjects.Clear();
+        Debug.Log("Yields - initYield run, all lists cleared");
+        foreach(var obj in GameObject.FindGameObjectsWithTag("HexCell"))
+        {
+            hexObjects.Add(obj.GetComponent<HexCell>());
+
+        }
+        Debug.Log($"There are {hexObjects.Count} hexs in grid");
+        
     }
 
 
+    public bool addEvent(Event e, TurnPhase current)
+    {
+        if (!activeEvents.Contains(e)){
+            e.setActiveMod(current);
+            activeEvents.Add(e);
+            distributeEvent(e);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
-
-    public void updateEventYield(){
+    private void distributeEvent(Event e)
+    {
+        float dist = e.getDistribution();
+        int affectedPlants = (int)Math.Floor(plants.Count * dist);
+        FisherYatesShuffle(plants);
+        if (plants.Count>0)
         {
-        modifiedcropYield = cropYield;
+            for (int i =0 ; i<affectedPlants; i++)
+            {
+                plants[i].yield.addEvent(e);
+                Vector3 loc = plants[i].transform.position;
+                loc.y += 5;
+                if((e.eventName == "Sting Bugs") || (e.eventName=="Three cornered alfalfa hopper"))
+                    e.spawnVisual(loc);
+            }
+        }
+    }
+//need to find where to call this function. If I call too early, then seeds wont be planted yet and hexObjects is still entire grid. If too late, yields arn't up to date.
+    public void findSeeds()
+    {
+        List<HexCell> temp = new List<HexCell>();
 
+        foreach(var hex in hexObjects)
+        {
+            if(hex.HasSeedObject())
+            {
+                if(hex.yield.getBushels()==0)
+                    hex.yield.setBushels(60f);
+                temp.Add(hex);
+                Debug.Log($"{hex} added to temp list with value of {hex.yield.getBushels()}");
+            }
+            
+        }
+        Debug.Log($"Temp size in findseeds() is {temp.Count}");
+        if(temp.Count > 0)
+        {
+            plants = temp;
+            Debug.Log($"Findseeds() collected {plants.Count} seeds");
+        }
+    }
+
+
+    public void updateEvents(){
+        
+        {
+        
         //step through activeEvents list to manage each event's active modifier
         foreach (var e in activeEvents)
         {
             //if modifer has a non zero duration
-            if (e.activeMod.activeDuration != 0)
+            if (e.getActiveDuration() != 0)
             {
-                Debug.Log($"The mod {e.name} - {e.activeMod.phaseName} - {e.activeMod.activeImpact} has been crunched");
-                modifiedcropYield = modifiedcropYield - (modifiedcropYield * e.activeMod.activeImpact);
-                e.activeMod.modTick();
+                e.triggerMod();
+                foreach(var hex in plants)
+                {
+                    if(hex.yield.isEvent(e))
+                    {
+                        hex.yield.updateYield();
+                    }
+                }
             }
-            if (e.activeMod.activeDuration == 0)
+            if (e.getActiveDuration() == 0)
             {
                 expiredEvents.Add(e);
-                Debug.Log($"{e.name} - {e.activeMod.phaseName} has expired");
+                e.removeVisual();
+                foreach(var hex in plants)
+                {
+                    if(hex.yield.isEvent(e))
+                        hex.yield.removeEvent(e);
+                }
             }
         }
         // clear the expiredEvents after they have been removed from activeEvents
         foreach (var e in expiredEvents)
         {
-            Debug.Log($"{e.name} - {e.activeMod.phaseName} removed");
             activeEvents.Remove(e);
         }
         expiredEvents.Clear();
     
-        cropYield = modifiedcropYield;
+        cropYield = calcYield();
     }
 
     }
+// using FisherYatesShuffle algorithm
+    static void FisherYatesShuffle<T>(List<T> list)
+    {
+        System.Random random = new System.Random();
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = random.Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
+
+    public float seasonEnd()
+    {
+        float profit = 0f;
+        foreach(var plant in plants)
+        {
+            profit += plant.yield.getBushels();
+            plant.ClearSeedObject();
+        }
+
+        plants.Clear();
+        profit = (float)Math.Truncate(profit*10.25f*100)/100;
+        Debug.Log($"Profit for season end is {profit}");
+        return profit;
+    }
+
 
 }

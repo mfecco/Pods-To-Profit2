@@ -72,3 +72,13 @@ MonoBehaviour:
     defaultDuration: 0
     activeDuration: 0
     appliedTurnPhase: 6
+  activeMod:
+    eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
+    appliedTurnPhase: 0
+  distribution: 0.33

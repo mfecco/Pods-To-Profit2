@@ -17444,7 +17444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnManager: {fileID: 1477915479}
-  money: 600000
+  money: 1000
   rhizobium: 0
   pesticides: 0
   fert: 0
@@ -56203,6 +56203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomEventHandler: {fileID: 1609404762}
+  cropYield: {fileID: 11400000, guid: b446a995d99905b4e996cd4c5333708b, type: 2}
   current: 0
   turnPanels:
   - {fileID: 1771989433}

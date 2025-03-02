@@ -16,3 +16,13 @@ MonoBehaviour:
   probability: 0.05
   eventDescription: Powerful tornados destory your fields
   modifiers: []
+  activeMod:
+    eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
+    appliedTurnPhase: 0
+  distribution: 1

@@ -16,24 +16,69 @@ MonoBehaviour:
   probability: 0.22
   eventDescription: Stem or seed Rot
   modifiers:
-  - phaseName: 
-    impact: 0
+  - eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
+  - eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
+  - eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
+  - eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
+  - eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
+  - eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0
-  - phaseName: 
-    impact: 0
+  - eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
     appliedTurnPhase: 0
+  activeMod:
+    eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
+    appliedTurnPhase: 0
+  distribution: 0.33

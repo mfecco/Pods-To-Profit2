@@ -41,6 +41,7 @@ public class TurnManager : MonoBehaviour
   //added RandomEventHandler and 7 references in activeTurn() by Matt Fecco 
   //this should be only changes made to implement as of now.
     public RandomEventHandler randomEventHandler;
+    public Yield cropYield;
     public TurnPhase current;
     // public TMP_Text phaseText;
     public GameObject[] turnPanels;
@@ -233,6 +234,7 @@ public class TurnManager : MonoBehaviour
     void Start()
     {
       // tempText.text = temp + "°";
+      cropYield.initYield();
       tempText.text = temp.ToString() + "°";
       current = TurnPhase.Preplant;
       tmpArw = GameObject.FindGameObjectWithTag("Arrow").GetComponent<tempArrow>();
@@ -392,8 +394,9 @@ public class TurnManager : MonoBehaviour
       /* Maybe add a month display to the UI that changes with the turn phases, a turn is a whole season (for now anyway)
          For now, just showing the turn phase
       */
-      
+      cropYield.findSeeds();
       phaseText.text = current.ToString();
+      randomEventHandler.PullEvent(current);
       
 
       switch(current)
@@ -471,7 +474,7 @@ public class TurnManager : MonoBehaviour
           yearText.text = "Year " + years;
           Debug.Log(current);
           
-         randomEventHandler.PullEvent(current);
+         
 
           break;
 
@@ -511,7 +514,7 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
           
-          randomEventHandler.PullEvent(current);
+          
 
           break;
 
@@ -556,7 +559,6 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
 
-          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -597,7 +599,6 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
 
-          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -624,7 +625,6 @@ public class TurnManager : MonoBehaviour
           Debug.Log(current);
           
           
-          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -678,7 +678,6 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
           
-          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -696,7 +695,6 @@ public class TurnManager : MonoBehaviour
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
           
-          randomEventHandler.PullEvent(current);
 
           break;
 
@@ -718,6 +716,9 @@ public class TurnManager : MonoBehaviour
       }
       else
       {
+        // Matt added this part to remove seedobjects until we find a better solution
+        inventory.money += cropYield.seasonEnd();
+
         foreach(GameObject p in plants)
         {
           Destroy(p);
