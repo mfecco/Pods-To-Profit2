@@ -17,13 +17,61 @@ MonoBehaviour:
   eventDescription: Drought hits your crops
   modifiers:
   - eventName: Severe Drought
-    phaseName: Reproductive
+    phaseName: Preplant
     defaultImpact: -0.45
     activeImpact: 0
     rateOfChange: 0
     defaultDuration: 3
     activeDuration: 0
     appliedTurnPhase: 0
+  - eventName: Severe Drought
+    phaseName: Planting
+    defaultImpact: -0.45
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 3
+    activeDuration: 0
+    appliedTurnPhase: 1
+  - eventName: Severe Drought
+    phaseName: Cotyledon
+    defaultImpact: -0.45
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 3
+    activeDuration: 0
+    appliedTurnPhase: 2
+  - eventName: Severe Drought
+    phaseName: Vegetative
+    defaultImpact: -0.45
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 3
+    activeDuration: 0
+    appliedTurnPhase: 3
+  - eventName: Severe Drought
+    phaseName: Fertilizer
+    defaultImpact: -0.45
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 3
+    activeDuration: 0
+    appliedTurnPhase: 4
+  - eventName: Severe Drought
+    phaseName: Reproductive
+    defaultImpact: -0.45
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 3
+    activeDuration: 0
+    appliedTurnPhase: 5
+  - eventName: Severe Drought
+    phaseName: Harvest
+    defaultImpact: -0.45
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 3
+    activeDuration: 0
+    appliedTurnPhase: 6
   activeMod:
     eventName: 
     phaseName: 
@@ -34,3 +82,4 @@ MonoBehaviour:
     activeDuration: 0
     appliedTurnPhase: 0
   distribution: 0.33
+  visualPrefab: {fileID: 0}

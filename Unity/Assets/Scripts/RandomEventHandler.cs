@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,11 @@ public class RandomEventHandler : MonoBehaviour
     
 
     public void PullEvent(TurnPhase current){
-        EventCategory ec = categories[(int)current];
+        // EventCategory ec = categories[(int)current];
+        EventCategory ec = Array.Find(categories, p=> p.label==current.ToString());
 
-        int randomIndex = Random.Range(0, ec.events.Count());
-        randomChance = Random.Range(0f, 1f);
+        int randomIndex = UnityEngine.Random.Range(0, ec.events.Count());
+        randomChance = UnityEngine.Random.Range(0f, 1f);
 
 
         if(randomChance <= ec.events[randomIndex].probability){
@@ -39,19 +41,26 @@ public class RandomEventHandler : MonoBehaviour
 
 
 
+
         
     }
-}
+
 
     //This function will allow us to script the order of first year events happening per phase.  We want specific events to happen
-    // at each phase to give the player a chance to learn game mechanics and not have difficulty run out of control in first year.
-//     public void firstYearEvents(TurnPhase current){
-//         firstYear.events[(int)current].activeMod = firstYear.events[(int)current].getModifier(current);
-//         if(firstYear.events[(int)current].activeMod != null)
-//         {
-//             cropYield.activeEvents.Append(firstYear.events[(int)current]);
-//         }
-//         cropYield.updateEventYield();
-//     }
+    //at each phase to give the player a chance to learn game mechanics and not have difficulty run out of control in first year.
+    //requires speicific setup of season1 eventcategory with even for each turnphase.
+    public void firstYearEvents(TurnPhase current){
+        
+        Event e = firstYear.events[(int)current];
+        if (e!=null)
+        {
+            cropYield.addEvent(e, current);
+        }
+        else
+            Debug.Log("Event Category not found when running firstYearEvents");
+        
+        cropYield.updateEvents();
 
-// }
+    }
+
+}

@@ -19,18 +19,18 @@ MonoBehaviour:
   - eventName: Weeds
     phaseName: Preplant
     defaultImpact: -0.33
-    activeImpact: 0.231
+    activeImpact: -0.113189995
     rateOfChange: 0.3
     defaultDuration: 3
-    activeDuration: 2
+    activeDuration: 0
     appliedTurnPhase: 0
   - eventName: Weeds
     phaseName: Planting
     defaultImpact: -0.44
-    activeImpact: 0.15092
+    activeImpact: -0.2156
     rateOfChange: 0.3
     defaultDuration: 3
-    activeDuration: 0
+    activeDuration: 1
     appliedTurnPhase: 1
   - eventName: Weeds
     phaseName: Cotyledon
@@ -59,10 +59,10 @@ MonoBehaviour:
   - eventName: Weeds
     phaseName: Reproductive
     defaultImpact: -0.33
-    activeImpact: 0.113189995
+    activeImpact: -0.231
     rateOfChange: 0.3
     defaultDuration: 3
-    activeDuration: 0
+    activeDuration: 2
     appliedTurnPhase: 5
   - eventName: Weeds
     phaseName: Harvest
@@ -74,11 +74,12 @@ MonoBehaviour:
     appliedTurnPhase: 6
   activeMod:
     eventName: Weeds
-    phaseName: Fertilizer
-    defaultImpact: 0.44
-    activeImpact: 0.308
+    phaseName: Reproductive
+    defaultImpact: -0.33
+    activeImpact: -0.231
     rateOfChange: 0.3
     defaultDuration: 3
     activeDuration: 2
-    appliedTurnPhase: 4
+    appliedTurnPhase: 5
   distribution: 0.33
+  visualPrefab: {fileID: 919132149155446097, guid: 918d10694fb21de459f8a7ca4696fbf7, type: 3}

@@ -16,62 +16,62 @@ MonoBehaviour:
   probability: 0.22
   eventDescription: Stem or seed Rot
   modifiers:
-  - eventName: 
-    phaseName: 
-    defaultImpact: 0
+  - eventName: Rhiz
+    phaseName: Preplant
+    defaultImpact: -0.2
     activeImpact: 0
     rateOfChange: 0
-    defaultDuration: 0
+    defaultDuration: 2
     activeDuration: 0
     appliedTurnPhase: 0
-  - eventName: 
-    phaseName: 
-    defaultImpact: 0
+  - eventName: Rhiz
+    phaseName: Planting
+    defaultImpact: -0.2
     activeImpact: 0
     rateOfChange: 0
-    defaultDuration: 0
+    defaultDuration: 2
     activeDuration: 0
-    appliedTurnPhase: 0
-  - eventName: 
-    phaseName: 
-    defaultImpact: 0
+    appliedTurnPhase: 1
+  - eventName: Rhiz
+    phaseName: Cotyledon
+    defaultImpact: -0.2
     activeImpact: 0
     rateOfChange: 0
-    defaultDuration: 0
+    defaultDuration: 2
     activeDuration: 0
-    appliedTurnPhase: 0
-  - eventName: 
-    phaseName: 
-    defaultImpact: 0
+    appliedTurnPhase: 2
+  - eventName: Rhiz
+    phaseName: Vegetative
+    defaultImpact: -0.2
     activeImpact: 0
     rateOfChange: 0
-    defaultDuration: 0
+    defaultDuration: 2
     activeDuration: 0
-    appliedTurnPhase: 0
-  - eventName: 
-    phaseName: 
-    defaultImpact: 0
+    appliedTurnPhase: 3
+  - eventName: Rhiz
+    phaseName: Fertilizer
+    defaultImpact: -0.2
     activeImpact: 0
     rateOfChange: 0
-    defaultDuration: 0
+    defaultDuration: 2
     activeDuration: 0
-    appliedTurnPhase: 0
-  - eventName: 
-    phaseName: 
-    defaultImpact: 0
+    appliedTurnPhase: 4
+  - eventName: Rhiz
+    phaseName: Reproductive
+    defaultImpact: -0.2
     activeImpact: 0
     rateOfChange: 0
-    defaultDuration: 0
+    defaultDuration: 2
     activeDuration: 0
-    appliedTurnPhase: 0
-  - eventName: 
-    phaseName: 
-    defaultImpact: 0
+    appliedTurnPhase: 5
+  - eventName: Rhiz
+    phaseName: Harvest
+    defaultImpact: -0.2
     activeImpact: 0
     rateOfChange: 0
-    defaultDuration: 0
+    defaultDuration: 2
     activeDuration: 0
-    appliedTurnPhase: 0
+    appliedTurnPhase: 6
   activeMod:
     eventName: 
     phaseName: 
@@ -82,3 +82,4 @@ MonoBehaviour:
     activeDuration: 0
     appliedTurnPhase: 0
   distribution: 0.33
+  visualPrefab: {fileID: 0}

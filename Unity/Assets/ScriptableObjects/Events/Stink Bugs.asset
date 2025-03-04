@@ -19,19 +19,67 @@ MonoBehaviour:
   - eventName: Stink Bugs
     phaseName: Reproductive
     defaultImpact: -0.15
-    activeImpact: 0
+    activeImpact: -0.15
     rateOfChange: 0
     defaultDuration: 2
-    activeDuration: 0
+    activeDuration: 2
     appliedTurnPhase: 5
-  activeMod:
-    eventName: 
-    phaseName: 
-    defaultImpact: 0
-    activeImpact: 0
+  - eventName: Stink Bugs
+    phaseName: Preplant
+    defaultImpact: -0.15
+    activeImpact: -0.15
     rateOfChange: 0
-    defaultDuration: 0
-    activeDuration: 0
+    defaultDuration: 2
+    activeDuration: 2
     appliedTurnPhase: 0
+  - eventName: Stink Bugs
+    phaseName: Planting
+    defaultImpact: -0.15
+    activeImpact: -0.15
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 2
+    appliedTurnPhase: 1
+  - eventName: Stink Bugs
+    phaseName: Cotyledon
+    defaultImpact: -0.15
+    activeImpact: -0.15
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 2
+    appliedTurnPhase: 2
+  - eventName: Stink Bugs
+    phaseName: Vegetative
+    defaultImpact: -0.15
+    activeImpact: -0.15
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 2
+    appliedTurnPhase: 3
+  - eventName: Stink Bugs
+    phaseName: Fertilizer
+    defaultImpact: -0.15
+    activeImpact: -0.15
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 2
+    appliedTurnPhase: 4
+  - eventName: Stink Bugs
+    phaseName: Harvest
+    defaultImpact: -0.15
+    activeImpact: -0.15
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 2
+    appliedTurnPhase: 6
+  activeMod:
+    eventName: Stink Bugs
+    phaseName: Reproductive
+    defaultImpact: -0.15
+    activeImpact: -0.15
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 2
+    appliedTurnPhase: 5
   distribution: 0.33
   visualPrefab: {fileID: 5907787103158241929, guid: 5d4f6c1c76b438f47873021514b88192, type: 3}

@@ -28001,6 +28001,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2229175783238672718, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
   m_PrefabInstance: {fileID: 772838123}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &772838125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
+  m_PrefabInstance: {fileID: 772838123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606412696b2bd0340a1fe45e6af4c9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &773538685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5200878037111384602, guid: a856d101ea84d704abf9bb8a8ee0c125, type: 3}
@@ -41090,17 +41101,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078927807}
   m_CullTransparentMesh: 1
---- !u!114 &1081837930 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6188835035284894312, guid: f34e94dc7f4d27e46aca142de48995ec, type: 3}
-  m_PrefabInstance: {fileID: 848932090}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137edb525cce595469130aad9016cdd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1084215374
 GameObject:
   m_ObjectHideFlags: 0
@@ -61705,7 +61705,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 479b3981c0959804ba7b72b3cb8ff5e1, type: 2}
   - {fileID: 11400000, guid: 6bd8d5c69e20af54a944aa38d004820f, type: 2}
   - {fileID: 11400000, guid: db44ee09e75fd2745b5ef5f7129d5539, type: 2}
-  firstYear: {fileID: 0}
+  firstYear: {fileID: 11400000, guid: bb21de68be07d4b4a82e4a15a89949af, type: 2}
   turnmanager: {fileID: 1477915479}
   cropYield: {fileID: 11400000, guid: b446a995d99905b4e996cd4c5333708b, type: 2}
 --- !u!4 &1609404763
@@ -77604,7 +77604,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   debugTransform: {fileID: 8862633107828519910, guid: fd10fe279033e7140beda3e68cd84f8a, type: 3}
-  selectedTool: {fileID: 1081837930}
+  selectedTool: {fileID: 772838125}
 --- !u!4 &2033549433
 Transform:
   m_ObjectHideFlags: 0
