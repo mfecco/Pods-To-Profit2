@@ -27987,7 +27987,7 @@ PrefabInstance:
     - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
       propertyPath: selectedSeedObjectSO
       value: 
-      objectReference: {fileID: 11400000, guid: 951202fd933332d499685ed03a817c32, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
       propertyPath: seedObjects.Array.data[0]
       value: 
@@ -61782,7 +61782,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 479b3981c0959804ba7b72b3cb8ff5e1, type: 2}
   - {fileID: 11400000, guid: 6bd8d5c69e20af54a944aa38d004820f, type: 2}
   - {fileID: 11400000, guid: db44ee09e75fd2745b5ef5f7129d5539, type: 2}
-  firstYear: {fileID: 0}
+  firstYear: {fileID: 11400000, guid: bb21de68be07d4b4a82e4a15a89949af, type: 2}
   turnmanager: {fileID: 1477915479}
   cropYield: {fileID: 11400000, guid: b446a995d99905b4e996cd4c5333708b, type: 2}
 --- !u!4 &1609404763
