@@ -396,7 +396,12 @@ public class TurnManager : MonoBehaviour
       */
       cropYield.findSeeds();
       phaseText.text = current.ToString();
-      randomEventHandler.PullEvent(current);
+      if (years==1)
+      {
+        randomEventHandler.firstYearEvents(current);
+      }
+      else
+        randomEventHandler.PullEvent(current);
       
 
       switch(current)
