@@ -722,7 +722,11 @@ public class TurnManager : MonoBehaviour
       else
       {
         // Matt added this part to remove seedobjects until we find a better solution
-        inventory.money += cropYield.seasonEnd();
+        //inventory.money += cropYield.seasonEnd();
+
+        // Matt, I changed your code line based on the unused sellAllPlants() function near the bottom of this script
+        // which now updates the money display in the UI  --Nolan
+        inventory.changeMoney(cropYield.seasonEnd());
 
         foreach(GameObject p in plants)
         {
