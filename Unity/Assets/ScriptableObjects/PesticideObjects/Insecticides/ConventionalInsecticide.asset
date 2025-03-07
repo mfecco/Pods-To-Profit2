@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e23cd5c1d7d8e42ad2a159b0b44b05, type: 3}
-  m_Name: SustainableSeed
+  m_Script: {fileID: 11500000, guid: 3bb607eba965b6744bc1a2a7a890eb59, type: 3}
+  m_Name: ConventionalInsecticide
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3694959970064179609, guid: 85e9caca6078b66448b5a7c42eb84863, type: 3}
   sprite: {fileID: 0}
-  objectName: SustainableSeed
-  purchasePrice: 400
-  seedType: 1
+  objectName: ConventionalInsecticide
+  purchasePrice: 0
+  pesticideType: 1
+  farmType: 2

@@ -43,8 +43,9 @@ public class SeedInteractable : TileInteractable
             //TODO: !!!!!!!!!! "!selectedTile.getTilled()" is only checked for false for testing, as we cannot yet change tools, make sure the check
             //is actually being made for selectedTile.getTilled() == true once things are functional
             // (RL) InventoryManager.inventory[seedID[0] - '0'][seedID[1] - '0'] >= 1 is a check to see the amount of the seed is >= 1
-            if(selectedTile != null && !selectedTile.getTilled() && !selectedTile.HasSeedObject() && turnManager.getCurrentPhase() == TurnPhase.Planting && InventoryManager.inventory[seedID[0] - '0'][seedID[1] - '0'] >= 1){
+            if(selectedTile != null && selectedTile.getTilled() && !selectedTile.HasSeedObject() && turnManager.getCurrentPhase() == TurnPhase.Planting && InventoryManager.inventory[seedID[0] - '0'][seedID[1] - '0'] >= 1){
                 SeedObject.SpawnSeedObject(selectedSeedObjectSO, selectedTile);
+                
                 InventoryManager.changeInventory(seedID + "-1");
                 //DONE (RL): remove seedObject from inventory WITHOUT calling seedObject.Destroy()
                 //seedObject.Destroy is used when a seed is removed from tiles

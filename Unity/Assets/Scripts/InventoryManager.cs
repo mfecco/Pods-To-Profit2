@@ -116,6 +116,10 @@ public class InventoryManager : MonoBehaviour
         shopMoneyText.text = "$" + money;
     }
 
+    public float getMoney(){
+        return money;
+    }
+
     /* (HP)
      * The parameter is a string because only functions with one parameter show up in the
      * Unity editor... for whatever reason... and I figured using one string to hold all the
