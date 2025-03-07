@@ -1,4 +1,3 @@
 # Bio-Pesticide-Game
-Game playable at this current page
-https://web.eecs.utk.edu/~nyy212/biogame/index.html
+Game playable at [PtP-Webgame](https://mfecco.github.io/PtP-web/)
 
