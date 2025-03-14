@@ -41,6 +41,8 @@ public class InventoryManager : MonoBehaviour
     public bool ownTractor = false;
     public bool brokenTractor = false;
 
+    public Dictionary<string, int> itemInventory = new Dictionary<string, int>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +77,11 @@ public class InventoryManager : MonoBehaviour
         inventory[3] = new int[3] {0,       0,      0};     // insc
         inventory[4] = new int[3] {0,       0,      0};     // herb
 
+        itemInventory["OrganicSeeds"] = 0;
+        itemInventory["ConventionalSeed"] = 0;
+        itemInventory["OrganicFertilizer"] = 0;
+        itemInventory["ConventionalFertilizer"] = 0;
+
         // 0: seed : { organic (o), conventional (s), GMO (s) }
         shopPrices[0] = new int[3] {-75,    -50,    -80};
         // 1: fert : { organic (o), inorganic (c) }
@@ -95,7 +102,7 @@ public class InventoryManager : MonoBehaviour
         // fText.text = "Fertilizer: " + fert;
     }
 
-    /* (HP)
+	/* (HP)
      * Updates money variable and the money texts (both in the top UI bar, just one for in
      * the main screen and another for in the shop screen) as necessary.
      *
@@ -110,7 +117,7 @@ public class InventoryManager : MonoBehaviour
      * and could not find in the short time I had left. If this function is giving some error,
      * this is the first thing that I would check.
      */
-    public void changeMoney(float amount) {
+	public void changeMoney(float amount) {
         money += amount;
         moneyText.text = "$" + money;
         shopMoneyText.text = "$" + money;
@@ -118,6 +125,38 @@ public class InventoryManager : MonoBehaviour
 
     public float getMoney(){
         return money;
+    }
+
+    public void testFunc(string test)
+    {
+        Debug.Log(test);
+    }
+
+    /*
+     * Update the inventory with the amount of money and the item that is being changed
+     */
+    public void purchaseItem(int quantity, InventoryItem item, float customSellPrice=-1)
+    {
+        if (quantity == 0 || money < item.purchasePrice)
+            return;
+
+        itemInventory[item.objectName] += quantity;
+        money -= (customSellPrice < 0 ? item.purchasePrice : customSellPrice) * quantity;
+    }
+
+    /// <summary>
+    /// Sell the desired item by the specified quantity
+    /// </summary>
+    /// <param name="quantity">Quantity to sell</param>
+    /// <param name="item">The item that we are selling</param>
+    /// <param name="customSellPrice">Custom price to sell for. This is per item.</param>
+    public void sellItem(int quantity, InventoryItem item, float customSellPrice=-1)
+    {
+        if (quantity == 0 || itemInventory[item.objectName] < quantity)
+            return;
+
+        itemInventory[item.objectName] -= quantity;
+        money += (customSellPrice < 0 ? item.purchasePrice : customSellPrice) * quantity;
     }
 
     /* (HP)
@@ -133,14 +172,16 @@ public class InventoryManager : MonoBehaviour
      * sign : add or subtract from inventory[]
      * amount : the amount to be added/subtracted to/from inventory[]
      */
-    public void changeInventory(string typeChoiceStatusAmount) {
+    public void changeInventory(string typeChoiceStatusAmount)
+    {
         /* (HP)
          * if the input string is "!" then this is from a warning popup where the player has
          * clicked the "ok" button, which essentially just reruns this function after the
          * farming status has been downgraded to not flag the error again -- is like this
          * so the player doesn't have to click "buy" again after saying ok to the popup
          */
-        if (typeChoiceStatusAmount == "!") {
+        if (typeChoiceStatusAmount == "!")
+        {
             typeChoiceStatusAmount = savedInput;
         }
         int type = typeChoiceStatusAmount[0] - '0';
@@ -153,27 +194,40 @@ public class InventoryManager : MonoBehaviour
          * If negative amount, also need to have enough in inventory, or if positive amount,
          * then just change inventory as needed and return true, else return false
          */
-        if (sign == '+') {
-            if (money >= (amount * shopPrices[type][choice])) {
-                if (turnManager.farmingStatus < status) {
+        if (sign == '+')
+        {
+            if (money >= (amount * shopPrices[type][choice]))
+            {
+                if (turnManager.farmingStatus < status)
+                {
                     savedInput = typeChoiceStatusAmount;
                     turnManager.GiveShopWarning(status);
-                } else {
-                    if (type <= 1 && inventory[type][choice] == 0) {
+                }
+                else
+                {
+                    if (type <= 1 && inventory[type][choice] == 0)
+                    {
                         inventory[type][inventory[type].Length - 1]++;
-                    } else if (type > 1) {
+                    }
+                    else if (type > 1)
+                    {
                         shopInvTexts[((type - 2) * 2) + choice].text = "x" + inventory[type][choice] + " in Inventory";
                     }
                     changeMoney(amount * shopPrices[type][choice]);
                     inventory[type][choice] += amount;
                     Debug.Log("t: " + type + " ; c: " + choice + " ; inv: " + inventory[type][choice]);
                 }
-            } else {
+            }
+            else
+            {
                 // error message: "Not enough money"
             }
 
-        } else {
-            if (inventory[type][choice] >= amount) {
+        }
+        else
+        {
+            if (inventory[type][choice] >= amount)
+            {
                 inventory[type][choice] -= amount;
                 Debug.Log("choice, type= " + type + ", " + choice);
                 if (choice == 0 && type == 0) Debug.Log("-1 Organic Seed");
@@ -182,7 +236,9 @@ public class InventoryManager : MonoBehaviour
                 if (choice == 0 && type == 1) Debug.Log("-1 Organic Fert");
                 if (choice == 1 && type == 1) Debug.Log("-1 Inorganic Fert");
                 if (inventory[type][choice] == 0) inventory[type][inventory[type].Length - 1]--;
-            } else {
+            }
+            else
+            {
                 // (RL) c: 0 (Organic Seeds) 1 (Conventional) 2 (GMO)
                 if (choice == 0 && type == 0) Debug.Log("Not enough of Organic Seeds");
                 if (choice == 1 && type == 0) Debug.Log("Not enough of Conventional Seeds");

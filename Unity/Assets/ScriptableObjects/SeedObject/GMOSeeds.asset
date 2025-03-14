@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e23cd5c1d7d8e42ad2a159b0b44b05, type: 3}
-  m_Name: ConventionalSeed
+  m_Name: GMOSeeds
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6334112648961271145, guid: cc0385f03b696fc458e39077c0e778c7, type: 3}
+  prefab: {fileID: 0}
   sprite: {fileID: 0}
-  shopSprite: {fileID: 21300000, guid: afc6d5f7446a07e4ca4c9b320c3e98f8, type: 3}
-  objectName: ConventionalSeed
-  purchasePrice: 300
-  farmType: 0
-  storeName: Conventional
+  shopSprite: {fileID: 21300000, guid: 3ae10f5dffbec5344a728b6f0a437416, type: 3}
+  objectName: GMO Seeds
+  purchasePrice: 200
+  farmType: 1
+  storeName: GMO
