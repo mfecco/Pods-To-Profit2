@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -10,12 +11,25 @@ public class SeedInteractable : TileInteractable
     private string seedID;
     public InventoryManager InventoryManager;
 
+    const int SEED_OBJ_COUNT = 3;
+
     //Once buttons are functional, remove the SerializeField from selectedSeed
     //it will start as null and will be set by buttons or back to null once none are in inventory
     [SerializeField] private SeedObjectSO selectedSeedObjectSO;
-    [SerializeField] private SeedObjectSO[] seedObjects = new SeedObjectSO[3];
+    [SerializeField] private SeedObjectSO[] seedObjects = new SeedObjectSO[SEED_OBJ_COUNT];
     [SerializeField] private TurnManager turnManager;
+
     private Player player;
+
+    SeedObjectSO findSeedObjectByName(string name)
+    {
+        for (int i = 0; i < SEED_OBJ_COUNT; i++)
+        {
+            if (seedObjects[i].objectName == name) return seedObjects[i];
+        }
+
+        return null;
+    }
 
     public void setSeedObjectSObyID(string id) {
         seedID = id;
@@ -43,13 +57,15 @@ public class SeedInteractable : TileInteractable
             //TODO: !!!!!!!!!! "!selectedTile.getTilled()" is only checked for false for testing, as we cannot yet change tools, make sure the check
             //is actually being made for selectedTile.getTilled() == true once things are functional
             // (RL) InventoryManager.inventory[seedID[0] - '0'][seedID[1] - '0'] >= 1 is a check to see the amount of the seed is >= 1
-            if(selectedTile != null && selectedTile.getTilled() && !selectedTile.HasSeedObject() && turnManager.getCurrentPhase() == TurnPhase.Planting && InventoryManager.inventory[seedID[0] - '0'][seedID[1] - '0'] >= 1){
+            if(selectedTile != null && selectedTile.getTilled() && !selectedTile.HasSeedObject() && turnManager.getCurrentPhase() == TurnPhase.Planting && InventoryManager.inventory[seedID[0] - '0'][seedID[1] - '0'] >= 1 && InventoryManager.itemInventory[selectedSeedObjectSO.objectName] >= 1){
                 SeedObject.SpawnSeedObject(selectedSeedObjectSO, selectedTile);
                 
                 InventoryManager.changeInventory(seedID + "-1");
+                InventoryManager.updateInventory(selectedSeedObjectSO, -1);
                 //DONE (RL): remove seedObject from inventory WITHOUT calling seedObject.Destroy()
                 //seedObject.Destroy is used when a seed is removed from tiles
                 if (InventoryManager.inventory[seedID[0] - '0'][seedID[1] - '0'] == 0) selectedSeedObjectSO = null;
+                if (InventoryManager.itemInventory[selectedSeedObjectSO.objectName] == 0) selectedSeedObjectSO = null; // new inventory system
                 //DONE (RL): if there are no more seeds of the same type in inventory, set selectedSeed to null
                 //alternatively, set the selectedTool to null (if you do this, remove the selectedSeed != null line on line 14)
             }

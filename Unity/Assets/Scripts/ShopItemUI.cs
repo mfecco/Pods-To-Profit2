@@ -38,10 +38,12 @@ public class ShopItemUI : MonoBehaviour
     private void purchaseOne()
     {
         Debug.Log("Purchased 1 of " + inventoryItem.objectName + " for " + "$" + inventoryItem.purchasePrice.ToString("F2"));
+        inventoryRef.purchaseItem(1, inventoryItem);
     }
     private void customPurchase()
     {
         Debug.Log("Purchased " + customPurchaseQuantity.ToString() + " of " + inventoryItem.objectName + " for " + "$" + (inventoryItem.purchasePrice * customPurchaseQuantity).ToString("F2"));
+        inventoryRef.purchaseItem(customPurchaseQuantity, inventoryItem);
     }
 
 

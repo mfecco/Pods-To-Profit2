@@ -159,6 +159,33 @@ public class InventoryManager : MonoBehaviour
         money += (customSellPrice < 0 ? item.purchasePrice : customSellPrice) * quantity;
     }
 
+    public bool updateInventory(InventoryItem item, int quantity)
+    {
+        if (item == null) return false;
+        if (quantity == 0) return true;
+
+        if (quantity < 0)
+        {
+            if (Math.Abs(quantity) > itemInventory[item.objectName])
+            {
+                itemInventory[item.objectName] -= quantity;
+                return true;
+            } else
+            {
+                Debug.LogError("Attempting to remove " + Math.Abs(quantity).ToString() + " amount of " +  item.objectName + " when there is " + itemInventory[item.objectName] + " left");
+                return false;
+            }
+        }
+
+        if (quantity > 0)
+        {
+            Debug.Log("Adding " + quantity.ToString() + " to item: " + item.objectName);
+            itemInventory[item.objectName] += quantity;
+        }
+        
+        return true;
+    }
+
     /* (HP)
      * The parameter is a string because only functions with one parameter show up in the
      * Unity editor... for whatever reason... and I figured using one string to hold all the
