@@ -43,11 +43,7 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
         //check if game is running once pausing is implemented
-
-        //tile != null is checked in selectedTool.Interact() function
-        //not checking this here allows us to click with selectedtile == null and start interacting once a tile is selected
-        //if tile != null is check here, it will never interact unless our STARTING click is on a tile
-        if (selectedTool != null){
+        if (selectedTile != null && selectedTool != null){
             selectedTool.Interact(this); //sends player object as argument
         }
 

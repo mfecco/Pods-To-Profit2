@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e0cb2fb4c4a50429a354e37a813dc8, type: 3}
+  m_Name: Rhizoctonia Rot
+  m_EditorClassIdentifier: 
+  eventName: Rhizoctonia Rot
+  probability: 0.22
+  eventDescription: Stem or seed Rot
+  modifiers:
+  - eventName: Rhiz
+    phaseName: Preplant
+    defaultImpact: -0.2
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 0
+  - eventName: Rhiz
+    phaseName: Planting
+    defaultImpact: -0.2
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 1
+  - eventName: Rhiz
+    phaseName: Cotyledon
+    defaultImpact: -0.2
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 2
+  - eventName: Rhiz
+    phaseName: Vegetative
+    defaultImpact: -0.2
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 3
+  - eventName: Rhiz
+    phaseName: Fertilizer
+    defaultImpact: -0.2
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 4
+  - eventName: Rhiz
+    phaseName: Reproductive
+    defaultImpact: -0.2
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 5
+  - eventName: Rhiz
+    phaseName: Harvest
+    defaultImpact: -0.2
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 2
+    activeDuration: 0
+    appliedTurnPhase: 6
+  activeMod:
+    eventName: 
+    phaseName: 
+    defaultImpact: 0
+    activeImpact: 0
+    rateOfChange: 0
+    defaultDuration: 0
+    activeDuration: 0
+    appliedTurnPhase: 0
+  distribution: 0.33
+  visualPrefab: {fileID: 0}
