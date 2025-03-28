@@ -124,6 +124,11 @@ public class TurnManager : MonoBehaviour
     public GameObject[] plants;
 
     [Header ("Tool Buttons")]
+    public Button tiller;
+    // public Button rhizo;
+    public Button pest;
+    public Button seed;
+    public Button fert;
     public Button sale;
     /* 
      * 0 - 2 = pest slots 1 - 3
@@ -157,6 +162,7 @@ public class TurnManager : MonoBehaviour
 
     public float notillPriceModifier = .8f;
     public float notillYieldModifier = .8f;
+    int tillType = 3; //3 = subsoil, 6 = conv, 2 = notill. Indexes into cell graphic array for choosing the correct till tile graphic
 
     public float rhizoYieldModifier= 1.1f;
     public int rhizoAmount = -50;
@@ -239,6 +245,7 @@ public class TurnManager : MonoBehaviour
       phaseText.text = current.ToString();
       perSeedBasePlantPriceReset = perSeedBasePlantPrice;
       perPlantSaleAmountReset = perPlantSaleAmount;
+      tiller.interactable = false;
       // fert.interactable = false;
       invButtons[6].interactable = false;
       invButtons[7].interactable = false;
@@ -272,6 +279,28 @@ public class TurnManager : MonoBehaviour
       switch(current)
       {
         case TurnPhase.Preplant:
+          /*switch(index)
+          {
+            case 0: // rhizobium
+              inventory.changeMoney(shopPrices[index]);
+              inventory.rhizobium += shopAmounts[index];
+              break;
+            case 1: // pesticides
+              inventory.changeMoney(shopPrices[index]);
+              inventory.pesticides += shopAmounts[index];
+              break;
+            case 2: // seeds
+              inventory.changeMoney(shopPrices[index]);
+              inventory.seeds += shopAmounts[index];
+              Debug.Log(inventory.seeds);
+              break;
+            case 3: // fertilizer
+              inventory.changeMoney(shopPrices[index]);
+              inventory.fert += shopAmounts[index];
+              break;
+            default:
+              break;
+          }*/
           break;
           
         case TurnPhase.Planting:
@@ -334,6 +363,31 @@ public class TurnManager : MonoBehaviour
       }
     }
 
+    // public void buyTractor(GameObject button)
+    // {
+    //   if(inventory.changeMoney(-10000))
+    //   {
+    //     inventory.ownTractor = true;
+    //     button.SetActive(false);
+    //     updatePerks("Tractor");
+    //   }
+    // }
+
+    void destroyPlant()
+    {
+      if(plants.Length > 0)
+      {
+        int index = UnityEngine.Random.Range(0, plants.Length);
+        GameObject plant = plants[index];
+        while(plant.activeSelf != true)
+        {
+          index = UnityEngine.Random.Range(0, plants.Length);
+          plant = plants[index];
+        }
+        plant.SetActive(false);
+        Debug.Log("Removing plant " + index);
+      }
+    }
 
     void activeTurn()
     {
@@ -451,6 +505,17 @@ public class TurnManager : MonoBehaviour
           rtext.SetActive(false);
           ptext.SetActive(false);
 
+          text = "Looks like you're good to plant your soybeans!";
+          if(inventory.ownTractor)
+          {
+            if(UnityEngine.Random.Range(0f, 1f) >= tractorBreakdownChance)
+            {
+              text = "Oh no! Your tractor broke down. You'll have to repair it before you can use it again!";
+              inventory.brokenTractor = true;
+            }
+          }
+          plantingRandomChanceText.text = text;
+          tiller.interactable = true;
           turnPanels[(int)current].SetActive(true);
           Debug.Log(current);
           
@@ -469,6 +534,7 @@ public class TurnManager : MonoBehaviour
                  It's accessible via cell.neighbors[direction] where direction = NE, E, SE, SW, W, or NW.
                  Check HexCell and HexDirection scripts for more info.)
           */
+          tiller.interactable = false;
           cotyledon.SetActive(true);
 
           //text = "Looks like disease isn't a problem!";
@@ -481,7 +547,7 @@ public class TurnManager : MonoBehaviour
 
           if(UnityEngine.Random.Range(0f, 1f) >= diseaseChance)
           {
-            //destroyPlant
+            destroyPlant();
             text ="Oh no, you lost a plant to disease!";
           }
           // cotyledonDiseaseRandomChanceText.text = text;
@@ -502,7 +568,30 @@ public class TurnManager : MonoBehaviour
           break;
 
         case TurnPhase.Vegetative:
+          /*
+            Plants should show second level of graphic
+            THINGS FOR THIS PHASE
+              Chance of Disease (Root or foliar), insect (Lepidopteran, Coleoptera, Aphids. Root or foliar), and Weed problems.
+          */
+          //text = "Looks like disease isn't a problem!";
           vegetative.SetActive(true);
+
+          if(UnityEngine.Random.Range(0f, 1f) >= diseaseChance)
+          {
+            destroyPlant();
+            text ="Oh no, you lost a plant to disease!";
+          }
+          //vegDiseaseRandomChanceText.text = text;
+
+          text = "Looks like insects aren't a problem!";
+
+          if(UnityEngine.Random.Range(0f, 1f) >= insectChance)
+          {
+            destroyPlant();
+            text ="Oh no, you lost a plant to insects!";
+          }
+          //vegDiseaseRandomChanceText.text = text;
+
           plants = GameObject.FindGameObjectsWithTag("Plant");
           foreach(GameObject p in plants)
           {
@@ -553,6 +642,38 @@ public class TurnManager : MonoBehaviour
                 Temperature, water, wind like in cotyledon
                 Household issues like in planting
           */
+          text = "Looks like disease isn't a problem!";
+
+          if(UnityEngine.Random.Range(0f, 1f) >= diseaseChance / 2)
+          {
+            destroyPlant();
+            text ="Oh no, you lost a plant to disease!";
+          }
+          repDiseaseRandomChanceText.text = text;
+
+          text = "Looks like insects aren't a problem!";
+
+          if(UnityEngine.Random.Range(0f, 1f) >= insectChance / 2)
+          {
+            destroyPlant();
+            text ="Oh no, you lost a plant to insects!";
+          }
+          repDiseaseRandomChanceText.text = text;
+
+          text = "The weather looks good!";
+          if(UnityEngine.Random.Range(0f, 1f) >= weatherChance / 2)
+          {
+            string[] weather = {"It's been really hot lately, your crops are experiencing heat stress! This will affect your yield!", "Oh no, you're going through a drought! This will affect your yield!", "Heavy winds are wreaking havoc in your field! This will affect your yield!"};
+            text = weather[UnityEngine.Random.Range(0, 3)];
+            yieldPercent *= weatherYieldModifier;
+          }
+          repWeatherRandomChanceText.text = text;
+
+          // fert.interactable = false;
+          invButtons[6].interactable = false;
+          invButtons[7].interactable = false;
+          invButtons[8].interactable = false;
+          ftext.SetActive(false);
 
           foreach(GameObject p in plants)
           {
@@ -608,8 +729,6 @@ public class TurnManager : MonoBehaviour
         inventory.changeMoney(cropYield.seasonEnd());
 
         foreach(GameObject p in plants)
-        //Maija - this is where Yield is occuring, Destroy(p) is a bad destroy method
-        //I cant find any actual bugs this causes but use the proper tile method instead
         {
           Destroy(p);
         }
@@ -620,6 +739,192 @@ public class TurnManager : MonoBehaviour
       }
       activeTurn();
     }
+
+    void Update()
+    {
+      // tmpArw.rotateArrow(temp);
+      if(Input.GetMouseButtonDown(0))
+      {
+        if(rhizoing)
+        {
+          rhizoClicked();
+        }
+
+        if(pesticiding)
+        {
+          pestClicked();
+        }
+
+        if(fertilizing)
+        {
+          fertClicked();
+        }
+      }
+    }
+
+    public void rhizoSelected()
+    {
+      // bool r = rhizoing == true ? false : true;
+      // rhizoing = r;
+      rhizoing = !rhizoing;
+    }
+
+    public void rhizoClicked()
+    {
+      /*
+      HexCell cell = editor.getCell(); For future work mentioned at top
+      */
+
+      if(inventory.rhizobium > 0)
+      {
+        inventory.rhizobium--;
+        yieldPercent *= rhizoYieldModifier;
+      }
+    }
+
+    public void pestSelected()
+    {
+      bool r = pesticiding == true ? false : true;
+      rhizoing = false;
+      pesticiding = r;
+    }
+
+    public void pestClicked()
+    {
+      /*
+      HexCell cell = editor.getCell(); For future work mentioned at top
+      */
+
+      if(inventory.pesticides > 0)
+      {
+        inventory.pesticides--;
+        yieldPercent *= biopestYieldModifier;
+      }
+    }
+
+    public void fertSelected()
+    {
+      bool r = fertilizing == true ? false : true;
+      fertilizing = r;
+    }
+
+    public void fertClicked()
+    {
+      /*
+      HexCell cell = editor.getCell(); For future work mentioned at top
+      */
+
+      if(inventory.fert > 0)
+      {
+        inventory.fert--;
+        yieldPercent *= finalFertYield;
+      }
+    }
+
+
+   /* (KM) This is the old code that will eventually be deleted */
+    /* preplantToggles list is [tractorYes, GMOYes, TillSub, TillNo, Rhizo, BioPest]
+     * We can infer the other toggles based on these
+     */
+    /*public void preplantConfirm()
+    {
+      // If Tractor yes 
+      if(preplantToggles[0].GetComponent<Toggle>().isOn)
+      {
+        if(!inventory.ownTractor && !inventory.brokenTractor)
+        {
+          // We're leasing, deduct lease amount. 
+          inventory.changeMoney(tractorLeaseAmount);
+        }
+      }
+      else // Tractor no 
+      {
+        // Accounts for extra labor 
+        perSeedBasePlantPrice *= notractorPriceModifier;
+      }
+
+      // If GMO yes 
+      if(preplantToggles[1].GetComponent<Toggle>().isOn)
+      {
+        perSeedBasePlantPrice *= gmoPriceModifier;
+        yieldPercent *= gmoYieldModifier;
+        updatePerks("GMOs");
+      }
+
+      // If Subsoil tilling 
+      if(preplantToggles[2].GetComponent<Toggle>().isOn)
+      {
+        perSeedBasePlantPrice *= subsoilPriceModifier;
+        yieldPercent *= subsoilYieldModifier;
+        tillType = 2;
+        updatePerks("Subsoiling");
+      }
+      // If no till 
+      else if(preplantToggles[3].GetComponent<Toggle>().isOn)
+      {
+        perSeedBasePlantPrice *= notillPriceModifier;
+        yieldPercent *= notillYieldModifier;
+        tillType = 1;
+        updatePerks("No Tilling");
+      }
+      else // conventional tilling 
+      {
+        tillType = 5;
+        updatePerks("conventional Tilling");
+      }
+    } */
+
+    /* (KM) making new function for setting the tilling when a tilling button is pressed 
+     * I'm copy pasting some of the code that was in preplantConfirm
+     * Doing similar for seed type. */
+
+    /* (KM) This was practice code, will probably delete later */
+     /*public void preplantTillingConfirmation(int tillType)
+     {
+        // If no till 
+        if (tillType == 1)
+        {
+          perSeedBasePlantPrice *= notillPriceModifier;
+          yieldPercent *= notillYieldModifier;
+          tillType = 1;
+          updatePerks("No Tilling");
+        }
+        // If Subsoil tilling 
+        if (tillType == 2)
+        {
+          perSeedBasePlantPrice *= subsoilPriceModifier;
+          yieldPercent *= subsoilYieldModifier;
+          tillType = 2;
+          updatePerks("Subsoiling");
+        }
+        // If conventional tilling 
+        if (tillType == 5)
+        {
+          tillType = 5;
+          updatePerks("conventional Tilling");
+        }
+     }
+
+     public void preplantSeedConfirmation(int seedType)
+     {
+      // If organic seeds 
+      if (seedType == 1)
+      {
+        // don't know here yet, bc idk about price, yield percent, and perks... 
+      }
+      // If conventional seeds 
+      if (seedType == 2)
+      {
+        // don't know here yet, bc idk about price, yield percent, and perks... 
+      }
+      // If GMO seeds 
+      if (seedType == 3)
+      {
+        perSeedBasePlantPrice *= gmoPriceModifier;
+        yieldPercent *= gmoYieldModifier;
+        updatePerks("GMOs");
+      }
+     } */
 
      /* (KM) The actual new code for handling preplant decisions and warnings */
      /* We need to update tillType2, seedType, seedTreatmentType, or fertType */
@@ -775,14 +1080,64 @@ public class TurnManager : MonoBehaviour
       statusText.color = statusColors[farmingStatus];
     }
 
+    /* We want different game objects to blink to indicate that the player should click on them */
+    
+
+    /* fertilizerToggles list is [fertOrg, irrOverhead, irrFlood]
+     * We can infer the other toggles based on these
+     */
+    public void fertilizerConfirm()
+    {
+      int cost;
+      if(fertilizerToggles[0].GetComponent<Toggle>().isOn)
+      {
+        inventory.changeMoney(fertOrgCost);
+        finalFertYield = fertOrgYieldModifier;
+        cost = fertOrgCost;
+        perPlantSaleAmount *= 2;
+        updatePerks("Organic Fertilizer");
+      }
+      else
+      {
+        inventory.changeMoney(fertChemCost);
+        finalFertYield = fertChemYieldModifier;
+        cost = fertChemCost;
+        updatePerks("Chemical Fertilizer");
+      }
+
+      if(fertilizerToggles[1].GetComponent<Toggle>().isOn)
+      {
+        inventory.changeMoney(irrOvrCost);
+        yieldPercent *= irrOvrYieldModifier;
+        updatePerks("Overhead Irrigation");
+      }
+      else if(fertilizerToggles[2].GetComponent<Toggle>().isOn)
+      {
+        inventory.changeMoney(irrFloodCost);
+        updatePerks("Flood Irrigation");
+      }
+      else
+      {
+        yieldPercent *= irrNoYieldModifier;
+      }
+
+      shopAmounts[0] = 10;
+      shopPrices[0] = cost;
+
+      shopButtons[0].GetComponentsInChildren<TMP_Text>()[0].text = "Fertilizer $" + Math.Abs(cost);
+
+      for(int i = 1; i < shopButtons.Length; i++)
+      {
+        shopButtons[i].SetActive(false);
+      }
+    }
+
     public void sellAllPlants()
     {
       int count = 0;
       foreach(GameObject p in plants)
       {
         count++;
-
-        //Maija - another bad Destroy method, change later
         Destroy(p);
       }
 

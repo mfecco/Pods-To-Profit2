@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PesticideObject", menuName = "Game/PesticideObject")]
-public class PesticideObjectSO : ScriptableObject
+public class PesticideObjectSO : InventoryItem
 {
     public enum pesticideTypes{
         Fungicide,
@@ -11,20 +11,22 @@ public class PesticideObjectSO : ScriptableObject
         Herbicide
 
     }
+    
 
-    public enum farmTypes
-    {
-        Organic,
-        Sustainable,
-        Conventional
-    }
-
-    //public GameObject prefab;
-    public Sprite sprite;
-    public string objectName;
-    public int purchasePrice;
     public pesticideTypes pesticideType;
-    public farmTypes farmType;
+
+    //public enum farmTypes
+    //{
+    //    Organic,
+    //    Sustainable,
+    //    Conventional
+    //}
+
+    ////public GameObject prefab;
+    //public Sprite sprite;
+    //public string objectName;
+    //public int purchasePrice;
+    //public farmTypes farmType;
 
 }
 
