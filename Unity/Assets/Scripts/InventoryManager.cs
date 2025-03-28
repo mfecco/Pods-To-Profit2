@@ -79,6 +79,7 @@ public class InventoryManager : MonoBehaviour
 
         itemInventory["OrganicSeeds"] = 0;
         itemInventory["ConventionalSeed"] = 0;
+        itemInventory["GMO Seeds"] = 0;
         itemInventory["OrganicFertilizer"] = 0;
         itemInventory["ConventionalFertilizer"] = 0;
 
@@ -140,8 +141,12 @@ public class InventoryManager : MonoBehaviour
         if (quantity == 0 || money < item.purchasePrice)
             return;
 
+        Debug.Log("Quantity: " + quantity + " of " + item.objectName);
+
         itemInventory[item.objectName] += quantity;
-        money -= (customSellPrice < 0 ? item.purchasePrice : customSellPrice) * quantity;
+        float amt = (customSellPrice < 0 ? item.purchasePrice : customSellPrice) * quantity;
+        changeMoney(-amt);
+        Debug.Log(money.ToString());
     }
 
     /// <summary>
