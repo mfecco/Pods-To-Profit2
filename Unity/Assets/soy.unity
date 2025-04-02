@@ -6077,6 +6077,369 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fcbcdaa73be3e340b771e1d3095d958, type: 3}
+--- !u!1 &173953286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 173953288}
+  - component: {fileID: 173953287}
+  m_Layer: 0
+  m_Name: Weather
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &173953287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173953286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a533af34d41814fa16beee673939fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p1acc: 12.1
+  p2acc: 12.66
+  p3acc: 5.97
+  p4acc: 11.6
+  p5acc: 5.95
+  p1temp:
+  - 37
+  - 38.5
+  - 33
+  - 38
+  - 37.5
+  - 43
+  - 40
+  - 40.5
+  - 44.5
+  - 41.5
+  - 47.5
+  - 44.5
+  - 36.5
+  - 26.5
+  - 14.5
+  - 13
+  - 13
+  - 24.5
+  - 23.5
+  - 12
+  - 18
+  - 32.5
+  - 50
+  - 57
+  - 60
+  - 57
+  - 52
+  - 40.5
+  - 35.5
+  - 43.5
+  - 40.5
+  - 43
+  - 56
+  - 53.5
+  - 52.5
+  - 53.5
+  - 48
+  - 49.5
+  - 54.5
+  - 57
+  - 57
+  - 51
+  - 42.5
+  - 44.5
+  - 49
+  - 54
+  - 50.5
+  - 31.5
+  - 35.5
+  - 42.5
+  - 49.5
+  - 53
+  - 58.5
+  - 55
+  - 41.5
+  - 48
+  - 65.5
+  - 68.5
+  - 54
+  - 40
+  p2temp:
+  - 45
+  - 52.5
+  - 54.5
+  - 67
+  - 61
+  - 58.5
+  - 61
+  - 62
+  - 50
+  - 45.5
+  - 46.5
+  - 54.5
+  - 62
+  - 68.5
+  - 61
+  - 56
+  - 52.5
+  - 38.5
+  - 43
+  - 59
+  - 55.5
+  - 64
+  - 50.5
+  - 54.5
+  - 62
+  - 59.5
+  - 50.5
+  - 52.5
+  - 55.5
+  - 66.5
+  - 68.5
+  - 74
+  - 63.5
+  - 51
+  - 49
+  - 43.5
+  - 50
+  - 58.5
+  - 66
+  - 61
+  - 65.5
+  - 62.5
+  - 57.5
+  - 61
+  - 71.5
+  - 73
+  - 76
+  - 73
+  - 76.5
+  - 65.5
+  - 57.5
+  - 53.5
+  - 52
+  - 59
+  - 66.5
+  - 60.5
+  - 69
+  - 75
+  - 73
+  - 73
+  - 71.5
+  p3temp:
+  - 72.5
+  - 74.5
+  - 74.5
+  - 71
+  - 74
+  - 74
+  - 73.5
+  - 75
+  - 74.5
+  - 62
+  - 65
+  - 65.5
+  - 65.5
+  - 68.5
+  - 68
+  - 71.5
+  - 69.5
+  - 72.5
+  - 75.5
+  - 77.5
+  - 78.5
+  - 76.5
+  - 76
+  - 72
+  - 77.5
+  - 73.5
+  - 75
+  - 74.5
+  - 70
+  - 68
+  - 71
+  - 67.5
+  - 76.5
+  - 77.5
+  - 77.5
+  - 80
+  - 80
+  - 74.5
+  - 73.5
+  - 72
+  - 71.5
+  - 69
+  - 70.5
+  - 77.5
+  - 82
+  - 84.5
+  - 85.5
+  - 83.5
+  - 82.5
+  - 79.5
+  - 81
+  - 84
+  - 85.5
+  - 83
+  - 83
+  - 83.5
+  - 84.5
+  - 80.5
+  - 83
+  - 87.5
+  - 83.5
+  p4temp:
+  - 76
+  - 79.5
+  - 87.5
+  - 88.5
+  - 84.5
+  - 81
+  - 81
+  - 86.5
+  - 85
+  - 80
+  - 81
+  - 83.5
+  - 85.5
+  - 86.5
+  - 87.5
+  - 86.5
+  - 85
+  - 79
+  - 74.5
+  - 80
+  - 81.5
+  - 80.5
+  - 76.5
+  - 78.5
+  - 80.5
+  - 80
+  - 82.5
+  - 80
+  - 79.5
+  - 84.5
+  - 85
+  - 87
+  - 84
+  - 81.5
+  - 83
+  - 85
+  - 84.5
+  - 79
+  - 83
+  - 80
+  - 74.5
+  - 74
+  - 76.5
+  - 79
+  - 81.5
+  - 82.5
+  - 87
+  - 85.5
+  - 80
+  - 77
+  - 73.5
+  - 70
+  - 76
+  - 80.5
+  - 79
+  - 80.5
+  - 82.5
+  - 84
+  - 86.5
+  - 87.5
+  - 86
+  - 83
+  p5temp:
+  - 78
+  - 76.5
+  - 74.5
+  - 77.5
+  - 80
+  - 80
+  - 68.5
+  - 66.5
+  - 67.5
+  - 72.5
+  - 75.5
+  - 73
+  - 79.5
+  - 77
+  - 78.5
+  - 79
+  - 74
+  - 76.5
+  - 79.5
+  - 81.5
+  - 82
+  - 81.5
+  - 80.5
+  - 77.5
+  - 71
+  - 73
+  - 68.5
+  - 65
+  - 69
+  - 72
+  - 74.5
+  - 68
+  - 71
+  - 74.5
+  - 76
+  - 76
+  - 76.5
+  - 67
+  - 64
+  - 64.5
+  - 65.5
+  - 65.5
+  - 66.5
+  - 74.5
+  - 76.5
+  - 77.5
+  - 72
+  - 72
+  - 72.5
+  - 72.5
+  - 73
+  - 73.5
+  - 73.5
+  - 74.5
+  - 74.5
+  - 75
+  - 75.5
+  - 75.5
+  - 76
+  - 76.5
+  p1price: 12.5
+  p2price: 11.85
+  p3price: 11.2
+  p4price: 10.15
+  p5price: 9.82
+--- !u!4 &173953288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173953286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1056.8228, y: 659.76514, z: -2.3419194}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &174619598
 GameObject:
   m_ObjectHideFlags: 0
@@ -63380,6 +63743,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fcbcdaa73be3e340b771e1d3095d958, type: 3}
+<<<<<<< Updated upstream
 --- !u!114 &1636974210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7695684817535692700, guid: fbacc85fd9bd77e4e83f84e7365fcbac, type: 3}
@@ -63391,6 +63755,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+--- !u!1 &1636903319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1636903321}
+  - component: {fileID: 1636903320}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1636903320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636903319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf4716d19c99884781fee03968dfa76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weather: {fileID: 173953287}
+  turnManager: {fileID: 1477915479}
+  tempText: {fileID: 1549597751}
+  rainText: {fileID: 1740876903}
+  priceText: {fileID: 1313640570}
+--- !u!224 &1636903321
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636903319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.3419194}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1056.8228, y: 659.76514}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+>>>>>>> Stashed changes
 --- !u!1 &1640903119
 GameObject:
   m_ObjectHideFlags: 0
