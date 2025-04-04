@@ -17959,7 +17959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnManager: {fileID: 1477915479}
-  money: 10000
+  money: 1000
   rhizobium: 0
   pesticides: 0
   fert: 0
@@ -28496,7 +28496,7 @@ PrefabInstance:
     - target: {fileID: -174096270169728962, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
       propertyPath: 'seedObjects.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 6f6da7ce10914ac4a9c624e422346f62, type: 2}
     - target: {fileID: 2229175783238672718, guid: cc0ca27ae6a55e044b2be50da748e7b4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -59450,7 +59450,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548396940}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -67003,9 +67003,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Buy 1 for $80
-
-    (DISABLED)'
+  m_text: Buy 1 for $80
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 845e055fd5e8ca649afc96357caeace6, type: 2}
   m_sharedMaterial: {fileID: -7129872359336142683, guid: 845e055fd5e8ca649afc96357caeace6, type: 2}
