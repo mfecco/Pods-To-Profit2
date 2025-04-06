@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638795781940000000
-    m_Hash: 2972946175
+      ticks: 638795790340000000
+    m_Hash: 3297343495
   m_LockFileStatus:
     m_FilePath: /Users/randy/Desktop/Pods to Profit 2 mfecco/Untitled/Unity/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638795782020000000
-    m_Hash: 146246355
+      ticks: 638795790340000000
+    m_Hash: 3828112206
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,174 +22,6 @@ m_LocalPackages:
 m_ProjectPath: /Users/randy/Desktop/Pods to Profit 2 mfecco/Untitled/Unity/Packages
 m_EditorVersion: 6000.0.43f1 (97272b72f107)
 m_ResolvedPackages:
-- packageId: com.unity.collab-proxy@2.0.1
-  testable: 0
-  isDirectDependency: 1
-  version: 2.0.1
-  source: 1
-  resolvedPath: /Users/randy/Desktop/Pods to Profit 2 mfecco/Untitled/Unity/Library/PackageCache/com.unity.collab-proxy@f0901bb4be63
-  assetPath: Packages/com.unity.collab-proxy
-  name: com.unity.collab-proxy
-  displayName: Version Control
-  author:
-    name: 
-    email: 
-    url: 
-  category: Editor
-  type: asset
-  description: The package gives you the ability to use the Unity Version Control
-    in the Unity editor. To use Unity Version Control, a subscription is required.
-    Learn more about how you can get started for free by visiting plasticscm.com.
-  errors: []
-  versions:
-    all:
-    - 1.2.3-preview
-    - 1.2.4-preview
-    - 1.2.6
-    - 1.2.7
-    - 1.2.9
-    - 1.2.11
-    - 1.2.15
-    - 1.2.16
-    - 1.2.17-preview.3
-    - 1.3.2
-    - 1.3.3
-    - 1.3.4
-    - 1.3.5
-    - 1.3.6
-    - 1.3.7
-    - 1.3.8
-    - 1.3.9
-    - 1.4.9
-    - 1.5.7
-    - 1.6.0
-    - 1.7.1
-    - 1.8.0
-    - 1.9.0
-    - 1.10.2
-    - 1.11.2
-    - 1.12.5
-    - 1.13.5
-    - 1.14.1
-    - 1.14.4
-    - 1.14.7
-    - 1.14.9
-    - 1.14.12
-    - 1.14.13
-    - 1.14.15
-    - 1.14.16
-    - 1.14.17
-    - 1.14.18
-    - 1.15.1
-    - 1.15.4
-    - 1.15.7
-    - 1.15.9
-    - 1.15.12
-    - 1.15.13
-    - 1.15.15
-    - 1.15.16
-    - 1.15.17
-    - 1.15.18
-    - 1.17.0
-    - 1.17.1
-    - 1.17.2
-    - 1.17.6
-    - 1.17.7
-    - 2.0.0-preview.6
-    - 2.0.0-preview.8
-    - 2.0.0-preview.15
-    - 2.0.0-preview.17
-    - 2.0.0-preview.20
-    - 2.0.0-preview.21
-    - 2.0.0-preview.22
-    - 2.0.0
-    - 2.0.1
-    - 2.0.3
-    - 2.0.4
-    - 2.0.5
-    - 2.0.7
-    - 2.1.0-preview.3
-    - 2.1.0-preview.5
-    - 2.1.0-preview.6
-    - 2.1.0
-    - 2.2.0
-    - 2.3.1
-    - 2.4.3
-    - 2.4.4
-    - 2.5.1
-    - 2.5.2
-    - 2.6.0
-    - 2.7.1
-    compatible:
-    - 2.7.1
-    recommended: 2.7.1
-    deprecated: []
-  dependencies: []
-  resolvedDependencies: []
-  keywords:
-  - backup
-  - cloud
-  - collab
-  - collaborate
-  - collaboration
-  - control
-  - devops
-  - plastic
-  - plasticscm
-  - source
-  - team
-  - teams
-  - version
-  - vcs
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.com
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  entitlements:
-    licensingModel: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 638125977010000000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.collab-proxy@2.0/manual/index.html
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: 8740b4e630f877841cfa8e22ddfbcb237b70a9e6
-    path: 
-  unityLifecycle:
-    version: 2.7.1
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-  isDeprecated: 0
-  deprecationMessage: 
-  git:
-    hash: 
-    revision: 
-  upmReserved: '{"changelog":"Unity Version Control is now available as part of the
-    Version Control Package! You can enable Unity Version Control via Window > Unity
-    Version Control to get started!\nIf you have previously used the Unity Asset
-    Store Plastic SCM plug-in, you can now simply use this package. Make sure you
-    delete the plug-in from your project.\nRemoving a previously added Plastic SCM
-    Asset Store Plug-In:\n- Select the PlasticSCM folder in the Assets\\Plugins folder
-    on the Project tab, then click Edit > Delete\n- Close the Unity Editor and open
-    your project again. You will find the Plastic SCM menu item in the Window menu.\n\n###
-    Changed\n- Updated branding from \"Plastic SCM\" to \"Unity Version Control\"\n-
-    Improved offline experience by disabling the plugin when there is no internet
-    connection"}'
-  assetStore:
-    productId: 
-  fingerprint: f0901bb4be638e9d178e72453226cd0a032e9ed9
-  editorCompatibility:
-    compatibilityLevel: 1
-    minimumPackageVersion: 2.7.1
-    minimumUnityVersion: 2020.3.14f1
 - packageId: com.unity.feature.2d@2.0.1
   testable: 0
   isDirectDependency: 1
