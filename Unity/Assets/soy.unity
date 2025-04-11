@@ -72633,7 +72633,7 @@ GameObject:
   - component: {fileID: 1575309734}
   m_Layer: 0
   m_Name: GameInput
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94525,7 +94525,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1090112873}
   tileLayerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 4294967295
   debugTransform: {fileID: 8862633107828519910, guid: fd10fe279033e7140beda3e68cd84f8a, type: 3}
   selectedTool: {fileID: 1998555525}
 --- !u!4 &2033549433

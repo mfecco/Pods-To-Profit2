@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Report
+public class Report : MonoBehaviour
 {
 
     public Yield cropYield;
