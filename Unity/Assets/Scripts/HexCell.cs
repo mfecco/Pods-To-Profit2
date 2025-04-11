@@ -5,6 +5,9 @@ using UnityEngine;
 /* HexCell contains all data that needs to be known by the Cells themselves
 	 If you need to add data to the Cells, add a private variable and get and set methods as done for neighbors[]
 */
+
+//Interaction is done in TileInteractables and Player
+
 [System.Serializable]
 public class HexCell : MonoBehaviour
 {

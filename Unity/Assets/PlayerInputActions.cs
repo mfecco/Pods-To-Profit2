@@ -95,7 +95,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Value"",
                     ""id"": ""66cc2ce3-cb28-452b-8635-a11cd6b24e9e"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -108,6 +108,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Scout"",
+                    ""type"": ""Button"",
+                    ""id"": ""5715d072-80cb-42ea-b765-174f8b22274a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +139,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27ee5344-f104-46ce-bc14-27e8d55403b8"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard and Mouse"",
+                    ""action"": ""Scout"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -159,6 +179,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
+        m_Player_Scout = m_Player.FindAction("Scout", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -241,6 +262,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_MousePosition;
+    private readonly InputAction m_Player_Scout;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -260,6 +282,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/MousePosition".
         /// </summary>
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Scout".
+        /// </summary>
+        public InputAction @Scout => m_Wrapper.m_Player_Scout;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -292,6 +318,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
+            @Scout.started += instance.OnScout;
+            @Scout.performed += instance.OnScout;
+            @Scout.canceled += instance.OnScout;
         }
 
         /// <summary>
@@ -309,6 +338,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
+            @Scout.started -= instance.OnScout;
+            @Scout.performed -= instance.OnScout;
+            @Scout.canceled -= instance.OnScout;
         }
 
         /// <summary>
@@ -376,5 +408,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMousePosition(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Scout" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnScout(InputAction.CallbackContext context);
     }
 }

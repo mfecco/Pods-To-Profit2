@@ -160,12 +160,12 @@ public class toolMenu : MonoBehaviour
         {
             // Case: 0 slots showing - Disable UI elements
             if (index > -1) {
-            for (int j = 0; j < 3; j++)
-            {
-                sliderSlots[(index * 3) + j].slotObject.GetComponentsInChildren<Image>()[1].enabled = false;
-                sliderSlots[(index * 3) + j].slotObject.GetComponentInChildren<TMP_Text>().text = "";
-                sliderSlots[index * 3 + j].itemID = "";
-            }
+				for (int j = 0; j < 3; j++)
+				{
+					sliderSlots[(index * 3) + j].slotObject.GetComponentsInChildren<Image>()[1].enabled = false;
+					sliderSlots[(index * 3) + j].slotObject.GetComponentInChildren<TMP_Text>().text = "";
+					sliderSlots[index * 3 + j].itemID = "";
+				}
             }
         }
 

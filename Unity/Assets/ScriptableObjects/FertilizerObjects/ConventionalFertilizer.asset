@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749052fed01c0e24e8792c0e83dbec5f, type: 3}
   m_Name: ConventionalFertilizer
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  prefab: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b252eb8ffc30c444caf3f08bf6f1a40f, type: 3}
+  shopSprite: {fileID: 21300000, guid: b252eb8ffc30c444caf3f08bf6f1a40f, type: 3}
   objectName: ConventionalFertilizer
-  purchasePrice: 0
+  purchasePrice: 80
   farmType: 2
+  storeName: Conventional Fertilizer

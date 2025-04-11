@@ -9,7 +9,7 @@
                     "name": "Interact",
                     "type": "Value",
                     "id": "66cc2ce3-cb28-452b-8635-a11cd6b24e9e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Scout",
+                    "type": "Button",
+                    "id": "5715d072-80cb-42ea-b765-174f8b22274a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -44,6 +53,17 @@
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27ee5344-f104-46ce-bc14-27e8d55403b8",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard and Mouse",
+                    "action": "Scout",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
