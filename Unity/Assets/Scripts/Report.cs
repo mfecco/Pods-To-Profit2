@@ -1,20 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
-public class Report
+public static class Report
 {
+    //Simple report to console that shows current active events and total value of buschels.
 
-    public Yield cropYield;
-    public float totalValue;
-    public RandomEventHandler Handler;
-    //figure out how to aggregate all of the details of each active modifier.
-    //pull Event.eventDescription
+    public static void populateReport(TurnPhase current, Yield y)
+    {   
 
-    public void populateReport()
-    {
-        
+        Debug.Log($"**********FARM REPORT**************");
+        Debug.Log($"*********{current} PHASE)**********");
+        foreach (var e in y.activeEvents)
+        {
+            e.PrintDetails();
+            
+        }
 
+        Debug.Log($"************* ${(float)Math.Truncate(y.cropYield*10.25f*100)/100} *****************");
     }
+
 
 }

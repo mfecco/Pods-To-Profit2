@@ -20,13 +20,15 @@ public class Event : ScriptableObject
     [SerializeField] private GameObject visualPrefab;
     private List<GameObject> visualInstances = new List<GameObject>();
     
-    //visual effects?
-    //mitigation options?
+    //mitigation options? We need to add functionality to take mitigation item and remove appropriate event effects from plant objects.
+
+    //Spawn visual at given position of seed object
     public void spawnVisual(Vector3 position)
     {
         visualInstances.Add(Instantiate(visualPrefab, position, Quaternion.identity));
     }
 
+    // Removes all visual instances of Event object
     public void removeVisual()
     {
         foreach(var visual in visualInstances)

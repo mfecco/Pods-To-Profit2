@@ -18,15 +18,15 @@ public class RandomEventHandler : MonoBehaviour
     public Yield cropYield;
 
     
-
+    // pulls a randome event from a set of event categories based upon turn phase
     public void PullEvent(TurnPhase current){
-        // EventCategory ec = categories[(int)current];
+        
         EventCategory ec = Array.Find(categories, p=> p.label==current.ToString());
 
         int randomIndex = UnityEngine.Random.Range(0, ec.events.Count());
         randomChance = UnityEngine.Random.Range(0f, 1f);
 
-
+        // if below probability threshold, event occurs
         if(randomChance <= ec.events[randomIndex].probability){
                 if(cropYield.addEvent(ec.events[randomIndex], current))
                 {
@@ -37,6 +37,8 @@ public class RandomEventHandler : MonoBehaviour
                     Debug.Log($"{ec.events[randomIndex].name} event was picked from the {current.ToString()} phase for the {ec.label} category, however it was already and active event");
             
         }
+        //updates yield immeditly after probability check. 
+        // This might be better placed somewhere else to allow other game elemnts to occure before update for turn
         cropYield.updateEvents();
 
 

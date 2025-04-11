@@ -228,7 +228,6 @@ public class TurnManager : MonoBehaviour
     void Start()
     {
       // tempText.text = temp + "°";
-      cropYield.initYield();
       tempText.text = temp.ToString() + "°";
       current = TurnPhase.Preplant;
       tmpArw = GameObject.FindGameObjectWithTag("Arrow").GetComponent<tempArrow>();
@@ -340,11 +339,14 @@ public class TurnManager : MonoBehaviour
       /* Maybe add a month display to the UI that changes with the turn phases, a turn is a whole season (for now anyway)
          For now, just showing the turn phase
       */
+      
       cropYield.findSeeds();
       phaseText.text = current.ToString();
       if (years==1)
       {
         randomEventHandler.firstYearEvents(current);
+        // cropYield.populateReport(current);
+        Report.populateReport(current, cropYield);
       }
       else
         randomEventHandler.PullEvent(current);

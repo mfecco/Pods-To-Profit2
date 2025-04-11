@@ -2,6 +2,7 @@
 //also allows for mitigations options to remove modifiers
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Schema;
@@ -10,11 +11,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "NewYield", menuName = "Game/Yield")]
-public class Yield : ScriptableObject
+// [CreateAssetMenu(fileName = "NewYield", menuName = "Game/Yield")]
+public class Yield : MonoBehaviour
 {
     public float cropYield;
-    [SerializeField] private List<Event> activeEvents = new List<Event>();
+    [SerializeField] public List<Event> activeEvents = new List<Event>();
     private List<Event> expiredEvents = new List<Event>();
     [SerializeField] private List<HexCell> hexObjects = new List<HexCell>();
     [SerializeField] private List<HexCell> plants;
@@ -56,6 +57,17 @@ public class Yield : ScriptableObject
         }
         Debug.Log($"There are {hexObjects.Count} hexs in grid");
         
+    }
+
+    IEnumerator DelayedStart()
+    {
+        yield return new WaitForSeconds(0.1f);
+        initYield();
+    }
+
+    void Start()
+    {
+        StartCoroutine(DelayedStart());
     }
 
 

@@ -7,11 +7,9 @@ public class Modifier
     public string phaseName;
     // The effect or impact of the modifier
     public float defaultImpact;
-    //could be smaller impact if treated in same phase it arrives.  
-    //Might be good to move this for a general var in RandomEvent class
-    //public float initialImpact 
+    //active impact when modifier is active modifier
     public float activeImpact; 
-    //compounding effect if untreated
+    //decaying effect if untreated
     public float rateOfChange;
     //amount of turns effect lasts, set -1 for infinate
     public int defaultDuration;
