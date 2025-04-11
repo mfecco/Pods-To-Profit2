@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749052fed01c0e24e8792c0e83dbec5f, type: 3}
   m_Name: OrganicFertilizer
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  prefab: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 229856b7ba981e942b26200063b98423, type: 3}
+  shopSprite: {fileID: 21300000, guid: 229856b7ba981e942b26200063b98423, type: 3}
   objectName: OrganicFertilizer
-  purchasePrice: 0
+  purchasePrice: 40
   farmType: 0
+  storeName: Organic Fertilizer

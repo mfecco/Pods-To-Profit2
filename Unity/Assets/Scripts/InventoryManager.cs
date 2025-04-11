@@ -41,8 +41,10 @@ public class InventoryManager : MonoBehaviour
     public bool ownTractor = false;
     public bool brokenTractor = false;
 
-    // Start is called before the first frame update
-    void Start()
+	public Dictionary<string, int> itemInventory = new Dictionary<string, int>();
+
+	// Start is called before the first frame update
+	void Start()
     {
         moneyText.text = "$" + money;
         shopMoneyText.text = "$" + money;
@@ -75,8 +77,14 @@ public class InventoryManager : MonoBehaviour
         inventory[3] = new int[3] {0,       0,      0};     // insc
         inventory[4] = new int[3] {0,       0,      0};     // herb
 
-        // 0: seed : { organic (o), conventional (s), GMO (s) }
-        shopPrices[0] = new int[3] {-75,    -50,    -80};
+		itemInventory["OrganicSeeds"] = 0;
+		itemInventory["ConventionalSeed"] = 0;
+		itemInventory["OrganicFertilizer"] = 0;
+		itemInventory["ConventionalFertilizer"] = 0;
+
+
+		// 0: seed : { organic (o), conventional (s), GMO (s) }
+		shopPrices[0] = new int[3] {-75,    -50,    -80};
         // 1: fert : { organic (o), inorganic (c) }
         shopPrices[1] = new int[2] {-40,    -80};
         // 2: fung : { organic (o), inorganic (c) }
@@ -120,7 +128,91 @@ public class InventoryManager : MonoBehaviour
         return money;
     }
 
-    /* (HP)
+    public int getCurrentQuantity(string itemName)
+    {
+        return itemInventory[itemName];
+    }
+
+	/*
+     * Update the inventory with the amount of money and the item that is being changed
+     */
+	public void purchaseItem(int quantity, InventoryItem item, float customSellPrice = -1)
+	{
+		if (quantity == 0 || money < item.purchasePrice)
+			return;
+
+        if (turnManager.farmingStatus == 0 && item.farmType != InventoryItem.farmTypes.Organic)
+        {
+            // Weird bullshit magic for turn manager. Working on using proper enum type to be shared across files
+            turnManager.GiveShopWarning(item.farmType == InventoryItem.farmTypes.Conventional ? 1 : 2);
+        } else
+        {
+			itemInventory[item.objectName] += quantity;
+			float amt = (customSellPrice < 0 ? item.purchasePrice : customSellPrice) * quantity;
+			changeMoney(-amt);
+        }
+
+	}
+
+	/// <summary>
+	/// Sell the desired item by the specified quantity
+	/// </summary>
+	/// <param name="quantity">Quantity to sell</param>
+	/// <param name="item">The item that we are selling</param>
+	/// <param name="customSellPrice">Custom price to sell for. This is per item.</param>
+	public void sellItem(int quantity, InventoryItem item, float customSellPrice = -1)
+	{
+		if (quantity == 0 || itemInventory[item.objectName] < quantity)
+			return;
+
+		itemInventory[item.objectName] -= quantity;
+		money += (customSellPrice < 0 ? item.purchasePrice : customSellPrice) * quantity;
+	}
+
+	public bool updateInventory(InventoryItem item, int quantity)
+	{
+		if (item == null) return false;
+		if (quantity == 0) return true;
+
+		if (quantity < 0)
+		{
+			if (Math.Abs(quantity) > itemInventory[item.objectName])
+			{
+				itemInventory[item.objectName] -= quantity;
+				return true;
+			}
+			else
+			{
+				Debug.LogError("Attempting to remove " + Math.Abs(quantity).ToString() + " amount of " + item.objectName + " when there is " + itemInventory[item.objectName] + " left");
+				return false;
+			}
+		}
+
+		if (quantity > 0)
+		{
+			Debug.Log("Adding " + quantity.ToString() + " to item: " + item.objectName);
+			itemInventory[item.objectName] += quantity;
+		}
+
+		return true;
+	}
+
+    // WIP: Making getter methods for use in toolMenu and TurnManager
+  //  public  GetSeeds()
+  //  {
+  //      InventoryItem[] seeds = new InventoryItem[2];
+		//itemInventory["OrganicSeeds"] = 0;
+		//itemInventory["ConventionalSeed"] = 0;
+		//itemInventory["OrganicFertilizer"] = 0;
+		//itemInventory["ConventionalFertilizer"] = 0;
+
+  //      if (itemInventory["OrganicSeeds"] > 0)
+  //      {
+  //          seeds[0] = itemInventory["OrganicSeeds"];
+  //      }
+  //  }
+
+	/* (HP)
      * The parameter is a string because only functions with one parameter show up in the
      * Unity editor... for whatever reason... and I figured using one string to hold all the
      * needed parameters would be way easier than programming onClick for each button. There
@@ -133,7 +225,7 @@ public class InventoryManager : MonoBehaviour
      * sign : add or subtract from inventory[]
      * amount : the amount to be added/subtracted to/from inventory[]
      */
-    public void changeInventory(string typeChoiceStatusAmount) {
+	public void changeInventory(string typeChoiceStatusAmount) {
         /* (HP)
          * if the input string is "!" then this is from a warning popup where the player has
          * clicked the "ok" button, which essentially just reruns this function after the

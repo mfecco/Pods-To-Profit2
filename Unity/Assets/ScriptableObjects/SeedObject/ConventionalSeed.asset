@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ConventionalSeed
   m_EditorClassIdentifier: 
   prefab: {fileID: 6334112648961271145, guid: cc0385f03b696fc458e39077c0e778c7, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b209549d4e09a5149a23f4f5aed0f053, type: 3}
+  shopSprite: {fileID: 21300000, guid: b209549d4e09a5149a23f4f5aed0f053, type: 3}
   objectName: ConventionalSeed
-  purchasePrice: 300
-  seedType: 2
+  purchasePrice: 75
+  farmType: 2
+  storeName: Conventional Seeds

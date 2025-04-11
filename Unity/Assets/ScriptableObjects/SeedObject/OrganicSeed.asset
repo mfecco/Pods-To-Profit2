@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: OrganicSeed
   m_EditorClassIdentifier: 
   prefab: {fileID: 2063430081137360523, guid: 1d03eef36d9f812429ec7129409cc54c, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 229856b7ba981e942b26200063b98423, type: 3}
+  shopSprite: {fileID: 21300000, guid: 229856b7ba981e942b26200063b98423, type: 3}
   objectName: OrganicSeeds
-  purchasePrice: 500
-  seedType: 0
+  purchasePrice: 100
+  farmType: 0
+  storeName: Organic Seeds

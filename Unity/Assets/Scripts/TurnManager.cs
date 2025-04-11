@@ -47,6 +47,13 @@ public class TurnManager : MonoBehaviour
     public GameObject[] turnPanels;
     public InventoryManager inventory;
 
+    public enum FarmStatus
+    {
+        Organic,
+        Sustainable,
+        Conventional
+    }
+
     /*
      *
      * (KM) I'm adding some variables I think we need. We need a farmingStatus variable (0, 1, or 2)
@@ -58,6 +65,7 @@ public class TurnManager : MonoBehaviour
      * named tillType2 b/c there is an existing tillType variable that we need to look into later.
      * We also need seedType, seedTreatmentType, and fertType variables for preplant.
      */
+    public FarmStatus farmingStatus_e = FarmStatus.Organic;
     public int farmingStatus = 0;
     public TMP_Text statusText;
     public string[] statuses = {"Organic" , "Sustainable" , "Conventional"};
@@ -686,17 +694,19 @@ public class TurnManager : MonoBehaviour
       //farmingStatus = status;
       if(tillType2 >= 2 | seedType >= 2 | seedTreatmentType >= 2 | fertType >= 2)
       {
+            farmingStatus_e = FarmStatus.Conventional;
         farmingStatus = 2;
       }
       else if(tillType2 >= 1 | seedType >= 1 | seedTreatmentType >= 1 | fertType >= 1)
       {
+        farmingStatus_e = FarmStatus.Sustainable;
         farmingStatus = 1;
       }
       statusText.text = statuses[farmingStatus];
       statusText.color = statusColors[farmingStatus];
     }
     /* Now we need to check the farming status to see if we should make a warning pop up */
-    public void GiveWarning(int potentialStatus) 
+    public void GiveWarning(int potentialStatus, Action onOk = null) 
     {
       // If the potential new status is greater than current farming status set warning to active
       // Remember org = 0, sus = 1, and con = 2 
