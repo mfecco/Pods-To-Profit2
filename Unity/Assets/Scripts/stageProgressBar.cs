@@ -88,31 +88,33 @@ public class stageProgressBar : MonoBehaviour
             // each case follows the exact same logic as this one
             case TurnPhase.Planting:
                 // if the player buys seeds for the first time in Planting phase, advance progBar
-                if (i == 0 && !seedBought) {
-                    seedBought = true;
-                    nextStage();
-                // if the player tills for the first time in Planting phase, advance progBar
-                } else if (i == 1 && !tilled) {
-                    tilled = true;
-                    nextStage();
-                }
+                // if (i == 0 && !seedBought) {
+                //     seedBought = true;
+                //     nextStage();
+                // // if the player tills for the first time in Planting phase, advance progBar
+                // } else if (i == 1 && !tilled) {
+                //     tilled = true;
+                //     nextStage();
+                // }
                 break;
 
             case TurnPhase.Cotyledon:
-                if (!fertBought) {
-                    fertBought = true;
-                    nextStage();
-                }
+                
+                // if (!fertBought) {
+                //     fertBought = true;
+                //     nextStage();
+                // }
                 break;
 
             case TurnPhase.Vegetative:
-                if (i == 0 && !inscBought) {
-                    inscBought = true;
-                    nextStage();
-                } else if (i == 1 && !fungBought) {
-                    fungBought = true;
-                    nextStage();
-                }
+               
+                // if (i == 0 && !inscBought) {
+                //     inscBought = true;
+                //     nextStage();
+                // } else if (i == 1 && !fungBought) {
+                //     fungBought = true;
+                //     nextStage();
+                // }
                 break;
             /* (HP)
              * These two phases don't have individual pop-ups implemented for them yet, just 
@@ -122,13 +124,10 @@ public class stageProgressBar : MonoBehaviour
              * follow the exact same logic as those above. 
              */
             case TurnPhase.Fertilizer:
-                nextStage();
-                nextStage();
+                
                 break;
             case TurnPhase.Reproductive:
-                nextStage();
-                nextStage();
-                nextStage();
+                
                 break;
 
             default:
@@ -153,6 +152,9 @@ public class stageProgressBar : MonoBehaviour
     }
 
     public void nextPhasePosition() {
+        if (turnManager.current == TurnPhase.Preplant) {
+            return;
+        }
         stageIndex++;
         if (stageIndex == 6) stageIndex = 0;
         progBar.transform.localPosition = new Vector3(stagePositions[stageIndex], progBar.transform.localPosition.y, 0);
